@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Psyched — Privacy Policy</title>
+<style>
+:root{
+  --bg:#f4f7f8; --surface:#fff; --ink:#15232a; --ink-2:#495b65; --ink-3:#636f7e;
+  --accent:#3c6e91; --rule:rgba(19,37,45,.11);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1519; --surface:#151d23; --ink:#e8eef1; --ink-2:#a8b7c0; --ink-3:#8494a0;
+    --accent:#7fb0cf; --rule:rgba(255,255,255,.12);
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.65 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:47rem;margin:0 auto;padding:3rem 1.25rem 5rem}
+.crumb{font-size:.875rem;color:var(--ink-3);margin-bottom:2rem}
+.crumb a{color:var(--accent);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+h1{font-size:clamp(1.75rem,4vw,2.4rem);line-height:1.15;letter-spacing:-.02em;margin:0 0 1.5rem}
+h2{font-size:1.3rem;letter-spacing:-.01em;margin:2.75rem 0 .75rem;padding-top:1.25rem;border-top:1px solid var(--rule)}
+h3{font-size:1.05rem;margin:1.75rem 0 .5rem}
+p,li{color:var(--ink-2)}
+a{color:var(--accent)}
+strong{color:var(--ink)}
+blockquote{margin:1.5rem 0;padding:1rem 1.25rem;background:var(--surface);
+  border-left:3px solid var(--accent);border-radius:.5rem}
+blockquote p{margin:.5rem 0;font-size:.925rem}
+blockquote p:first-child{margin-top:0} blockquote p:last-child{margin-bottom:0}
+code{background:var(--surface);padding:.15em .4em;border-radius:.3em;font-size:.9em;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+table{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:.9rem;display:block;overflow-x:auto}
+th,td{text-align:left;padding:.6rem .75rem;border-bottom:1px solid var(--rule);vertical-align:top}
+th{color:var(--ink);font-weight:600}
+hr{border:0;border-top:1px solid var(--rule);margin:2.5rem 0}
+ul,ol{padding-left:1.35rem}
+li{margin:.35rem 0}
+footer{margin-top:4rem;padding-top:1.5rem;border-top:1px solid var(--rule);
+  font-size:.85rem;color:var(--ink-3)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="crumb"><a href="/psyched/">Psyched</a> &middot; <a href="/">vruikeliu.github.io</a></div>
+<h1>Psyched Privacy Policy</h1>
+<blockquote>
+<p><strong>Read this first — status of this document.</strong></p>
+<p>This is a draft written by the Psyched development team for review. It is not
+legal advice, and nobody involved in writing it is your lawyer. Have a qualified
+lawyer in the publishing jurisdiction review it before it goes live at
+<code>vruikeliu.github.io/psyched/privacy</code>.</p>
+<p>Psyched is published by Ruike Liu, an individual, who is over 18 and is the party
+to these documents. It is a personal, non-commercial project: it is free, sells
+nothing, shows no advertising, and is not operated by a company.</p>
+<p>Users may be as young as 13. Where a user is under 18, a parent or guardian should
+read these documents with them; nothing here shifts the publisher's obligations onto
+that adult.</p>
+</blockquote>
+<hr />
+<h2>The short version</h2>
+<ul>
+<li>Psyched works with no account at all. If you never make one, nothing you write
+  leaves your phone.</li>
+<li>If you make an account, everything you write in the app is copied to a database
+  we run so you can get it back on another phone. That includes event titles, the
+  fear you wrote down, and your notes afterwards.</li>
+<li>The AI model that writes the companion lines never sees any of your writing. It
+  gets event types and your 0–10 ratings, and nothing else. This is the one claim
+  in this policy we care most about being exactly true.</li>
+<li>You can delete your account inside the app. It really deletes. There is no undo.</li>
+<li>No ads. No analytics SDKs. No trackers. Nothing sold to anybody, ever.</li>
+</ul>
+<h2>What Psyched is</h2>
+<p>Psyched is a performance psychology tool. You log something you're about to do,
+rate how bad you expect it to be, then rate how bad it actually was, and the app
+shows you the gap between the two over time.</p>
+<p>It is not a medical service, a mental health service, or therapy. It does not
+diagnose anything, treat anything, or give clinical advice.</p>
+<h2>Who is responsible</h2>
+<p>Psyched is published by Ruike Liu. For anything about your data,
+write to V.RuikeLiu@gmail.com.</p>
+<h2>What stays on your phone</h2>
+<p>Your events live on your device in Apple's SwiftData store. That's the real copy.
+The app reads and writes it whether or not you have an account, and whether or not
+you have any network connection.</p>
+<p>Also stored on your device, in standard iOS app storage:</p>
+<ul>
+<li>Which companion character you picked, and your language choice.</li>
+<li>A random identifier generated once when you install the app. It is not linked to
+  you, your name, or your Apple Account. It exists so our server can rate limit
+  requests per install and return you the same companion line if a request retries.</li>
+<li>Cached companion lines, so the same screen doesn't regenerate text repeatedly.</li>
+<li>If you sign in, your session token, stored in the iOS Keychain rather than in
+  ordinary app storage, because it is a credential.</li>
+</ul>
+<p>Reminder notifications are scheduled locally by iOS. The notification text contains
+your event title, and it never leaves your device to be delivered.</p>
+<h2>What happens if you make an account</h2>
+<p>An account is optional. It exists for one reason: so your history survives losing
+your phone, and so you can sign in on a new one.</p>
+<p>When you register, we store:</p>
+<ul>
+<li><strong>Your username</strong>, as you typed it, plus a lowercased copy used to check that no
+  two accounts share a name.</li>
+<li><strong>A hash of your password.</strong> Not the password. We run it through PBKDF2-HMAC-SHA256
+  with 600,000 iterations and a random 16-byte salt, and store only the result. It
+  cannot be turned back into your password. We cannot read your password, tell you
+  what it was, or email it to you, because we genuinely do not have it.</li>
+<li><strong>A hash of your recovery code</strong>, stored the same way. The code itself is shown to
+  you once, at signup, and never again.</li>
+<li>The time the account was created and last changed.</li>
+</ul>
+<p>Once you're signed in, the app syncs your events to our server. <strong>A synced event
+includes everything in it, including the free text you wrote:</strong></p>
+<ul>
+<li>the event title</li>
+<li>the event type (exam, quiz, presentation, interview, tryout, other)</li>
+<li>the date and time of the event</li>
+<li>your focus intention</li>
+<li><strong>the fear you wrote down</strong> — what you were afraid would happen</li>
+<li>your dread rating and your reality rating, 0 to 10</li>
+<li>when you completed the pre-event protocol</li>
+<li><strong>your outcome note</strong> — what you wrote afterwards</li>
+<li>created and updated timestamps, and a deletion marker if you deleted the event</li>
+</ul>
+<p>We are stating that plainly rather than hiding it behind "content you provide."
+If you sign in, the sentences you write in Psyched sit in a database we run. If you
+would rather they never did, don't make an account — the app is fully usable without
+one and we designed it that way on purpose.</p>
+<p>Our server also briefly records failed sign-in attempts against your username and
+against the network address you connected from, so somebody can't sit there guessing
+passwords. Those counters expire on their own and are not part of your account.</p>
+<h2>What DeepSeek sees</h2>
+<p>The companion characters are written by DeepSeek, an AI model provider based in
+China. Their servers are outside our control, so what we send them matters more than
+anything else in this policy.</p>
+<p><strong>We send DeepSeek only the following, and never anything else:</strong></p>
+<ul>
+<li>which companion you picked, and which language you're using</li>
+<li>which moment in the app you're in (pre-event, evidence, outcome)</li>
+<li>the event <em>type</em> — the word "exam" or "interview", nothing about which exam</li>
+<li>your dread and reality ratings, and figures our own code calculates from them:
+  how many events you've logged, your average dread, your average reality, the
+  average gap, how many events you over-predicted, and up to your twenty most
+  recent events as type-plus-two-numbers</li>
+<li>labels our code derives, like whether your gap is narrowing or widening</li>
+<li>if you're using the reappraisal screen, which body sensation you tapped from a
+  fixed list of six</li>
+</ul>
+<p><strong>We never send DeepSeek:</strong></p>
+<ul>
+<li>your event titles</li>
+<li>the fear you wrote down</li>
+<li>your focus intention</li>
+<li>your outcome notes</li>
+<li>any date, for any event</li>
+<li>your username, your account, or your random install identifier</li>
+</ul>
+<p>There is no path in our code from the synced-events database to the code that builds
+model prompts. That separation is enforced by an automated test that fails the build
+if anyone ever wires the two together.</p>
+<p>Everything the model writes back is checked by our own code before you see it, and
+anything that reads as clinical language, invents a number we didn't supply, or
+breaks character is thrown away and replaced with a line built into the app.</p>
+<h2>Where your data is stored</h2>
+<p>If you have an account, your data sits in Cloudflare D1, a hosted SQLite database,
+in the Western North America (<code>wnam</code>) region, reached through a Cloudflare Worker. Cloudflare
+operates the infrastructure and can see the network requests that reach it,
+including your IP address, in the ordinary way any web host does. We don't keep our
+own logs of your requests.</p>
+<p>Short-lived counters for rate limiting live in Cloudflare KV. Cached companion lines
+are also stored there, keyed by a hash of the ratings that produced them rather than
+by the ratings themselves, and never by anything identifying you.</p>
+<p>Apple sees whatever it normally sees when you download an app: your Apple Account
+and purchase records. That's between you and Apple, and we don't get names or email
+addresses from it.</p>
+<h2>Staying signed in</h2>
+<p>Signing in gives your phone a session token, which is 32 random bytes. The server
+never stores the token itself, only a SHA-256 hash of it, so a leak of our database
+would not hand anyone a working login.</p>
+<p><strong>A session expires 90 days after you sign in.</strong> After that the app asks you to sign
+in again. Signing out deletes that one session. Using your recovery code invalidates
+every session on every device.</p>
+<h2>If you lose your password</h2>
+<p>There is no password reset by email, because we never collect an email. There is no
+SMS reset, because we never collect a phone number. The recovery code you were shown
+at signup is the only way back in.</p>
+<p><strong>If you lose your password and your recovery code, your account cannot be
+recovered by anyone, including us.</strong> We cannot verify who you are, so we will not
+hand over an account to someone who asks nicely. This is a deliberate design choice
+and the cost of not collecting your contact details. Write the recovery code down
+somewhere real.</p>
+<p>Your history is still on your phone in that situation. It's the server copy and the
+username that are gone.</p>
+<h2>Deleting your account</h2>
+<p>Settings has a delete option. It asks for your password and asks you to confirm
+twice, and then:</p>
+<ul>
+<li>every event of yours on the server is deleted, including the free text</li>
+<li>every session of yours is deleted</li>
+<li>your user record, with your username and both hashes, is deleted</li>
+<li>the app clears your local store and returns to how it looked on first launch</li>
+</ul>
+<p>This is a hard delete, not a "deactivated" flag we could restore. <strong>It is not
+reversible and we cannot get it back for you.</strong> If you want to keep your history,
+save it somewhere else first.</p>
+<p>Cloudflare's own infrastructure backups may hold a copy for a short period before
+rolling off. We don't read them and can't selectively edit them.</p>
+<h2>What we don't do</h2>
+<ul>
+<li>No advertising, and no ad networks.</li>
+<li>No analytics SDK. No Firebase, no Amplitude, no Mixpanel, nothing of that kind.</li>
+<li>No third-party trackers, pixels, or fingerprinting.</li>
+<li>No data brokers. We do not sell, rent, or trade your data, and we never will.</li>
+<li>No location, contacts, photos, microphone, camera, health data, or advertising
+  identifier. The app doesn't request them.</li>
+<li>No profile-building across other apps or websites. There is nothing to build one
+  from.</li>
+</ul>
+<p>The only third parties in the picture are Apple (app distribution), Cloudflare
+(hosting), and DeepSeek (companion text, with the strict limits described above).</p>
+<h2>If you are under 18</h2>
+<p>A lot of people using Psyched are students, and many of them are under 18. Pretending
+otherwise would be dishonest, so here's how that works.</p>
+<ul>
+<li>You must be at least 13 to use Psyched.</li>
+<li>If you are under 18, an adult — a parent or guardian — should read this policy
+  and the Terms with you and agree to them on your behalf. They are the legal party.</li>
+<li>We ask for a username and a password. We do not ask for your real name, your age,
+  your school, your email, or your phone number, and you shouldn't put any of those
+  into a username or an event title.</li>
+<li>Everything in "What DeepSeek sees" applies to you exactly as written. Your writing
+  is not sent to an AI provider.</li>
+<li>A parent or guardian can write to V.RuikeLiu@gmail.com to ask what data we hold for an
+  account, or to ask us to delete it. Because we can't verify identities, we'll walk
+  them through deleting it inside the app rather than doing it from a request in an
+  email. That protects the account from someone impersonating a parent.</li>
+</ul>
+<p>If you are in a place with specific children's privacy rules, note that we designed
+around them by collecting as little as possible rather than by age-gating you out.</p>
+<h2>What you can do</h2>
+<ul>
+<li>Use the app with no account, in which case none of the server sections apply to you.</li>
+<li>See everything we hold, by opening the app — the synced copy is the same as the
+  copy on your phone.</li>
+<li>Delete individual events, which removes them from the server too.</li>
+<li>Delete your whole account and all of it, from Settings.</li>
+<li>Ask us anything at V.RuikeLiu@gmail.com.</li>
+</ul>
+<h2>How long we keep things</h2>
+<p>While your account exists, we keep your events so sync works. Sessions expire after
+90 days. Rate-limiting counters expire within hours. Cached companion lines expire on
+their own and contain no identifying data. When you delete your account, everything
+tied to it goes at once.</p>
+<h2>Security, honestly</h2>
+<p>We hash passwords with PBKDF2 at 600,000 iterations, compare secrets in constant
+time, store only hashes of session tokens, and talk to the server over HTTPS only.
+Account deletion is written as explicit deletes inside a single transaction rather
+than relying on database cascade rules to fire.</p>
+<p>No system is perfect, and this one is built by a small team. If you find a security
+problem, please write to V.RuikeLiu@gmail.com before telling anyone else, and we'll fix it.</p>
+<h2>Changes to this policy</h2>
+<p>If we change what we collect or who we send it to, we'll update this page and the
+"Last updated" date, and the app will point you at it. If a change is significant —
+new third party, new category of data — we'll say so in the app rather than quietly
+editing the page.</p>
+<h2>Questions</h2>
+<p>Write to V.RuikeLiu@gmail.com. This policy is governed by the law of
+the State of [YOUR STATE], United States.</p>
+<footer>Psyched is a personal, non-commercial project by Ruike Liu.<br>
+Questions: <a href="mailto:V.RuikeLiu@gmail.com">V.RuikeLiu@gmail.com</a></footer>
+</div>
+</body>
+</html>
