@@ -49,9 +49,8 @@ footer{margin-top:4rem;padding-top:1.5rem;border-top:1px solid var(--rule);
 <div class="wrap">
 <div class="crumb"><a href="/psyched/">Psyched</a> &middot; <a href="/">vruikeliu.github.io</a></div>
 <h1>Psyched Privacy Policy</h1>
-<p><strong>Effective:</strong> 21 August 2026<br>
+<p><strong>Effective:</strong> 21 August 2026
 <strong>Last updated:</strong> 27 September 2026</p>
-<hr />
 <h2>The short version</h2>
 <ul>
 <li>Psyched works with no account at all. If you never make one, nothing you write
@@ -85,10 +84,6 @@ you have any network connection.</p>
   you, your name, or your Apple Account. It exists so our server can rate limit
   requests per install and return you the same companion line if a request retries.</li>
 <li>Cached companion lines, so the same screen doesn't regenerate text repeatedly.</li>
-<li>Which body sensations you tapped at the protocol's check-in, for each event, so
-  Insights can show which ones come up most often. These stay on this iPhone: they
-  are not part of Psyched account sync or iCloud sync, and deleting an event deletes
-  them with it.</li>
 <li>If you sign in, your session token, stored in the iOS Keychain rather than in
   ordinary app storage, because it is a credential.</li>
 </ul>
@@ -119,6 +114,9 @@ includes everything in it, including the free text you wrote:</strong></p>
 <li><strong>the fear you wrote down</strong> — what you were afraid would happen</li>
 <li>your dread rating and your reality rating, 0 to 10</li>
 <li>when you completed the pre-event protocol</li>
+<li>which body sensations you tapped at the protocol's check-in, from the fixed list
+  of six (heart pounding, sweaty palms, racing thoughts, and so on), so Insights can
+  show which ones come up most often on any phone you sign in on</li>
 <li><strong>your outcome note</strong> — what you wrote afterwards</li>
 <li>created and updated timestamps, and a deletion marker if you deleted the event</li>
 </ul>
@@ -150,8 +148,10 @@ anything else in this policy.</p>
   fixed list of six</li>
 </ul>
 <p>For App Store privacy disclosure, we conservatively classify that fixed sensation
-selection as Health data. It is not linked to your username, account, Apple Account,
-or random install identifier.</p>
+selection as Health data. What DeepSeek is sent is not linked to your username,
+account, Apple Account, or random install identifier. The copy that syncs with your
+events, if you have an account, is stored with your account like the rest of the
+event.</p>
 <p><strong>We never send DeepSeek:</strong></p>
 <ul>
 <li>your event titles</li>
@@ -234,8 +234,10 @@ copy for up to 14 days before they are deleted.</p>
 <li>No third-party trackers, pixels, or fingerprinting.</li>
 <li>No data brokers. We do not sell, rent, or trade your data, and we never will.</li>
 <li>No location, contacts, photos, microphone, camera, HealthKit data, or advertising
-  identifier. The app doesn't request them. The only body-related information sent
-  off-device is the fixed sensation selection described in "What DeepSeek sees."</li>
+  identifier. The app doesn't request them. The only body-related information that
+  leaves your device is the fixed sensation selection: sent to DeepSeek as described
+  in "What DeepSeek sees," and synced with your events if you have an account or turn
+  on iCloud sync.</li>
 <li>No profile-building across other apps or websites. There is nothing to build one
   from.</li>
 </ul>
