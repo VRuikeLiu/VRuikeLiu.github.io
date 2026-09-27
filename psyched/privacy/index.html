@@ -50,7 +50,7 @@ footer{margin-top:4rem;padding-top:1.5rem;border-top:1px solid var(--rule);
 <div class="crumb"><a href="/psyched/">Psyched</a> &middot; <a href="/">vruikeliu.github.io</a></div>
 <h1>Psyched Privacy Policy</h1>
 <p><strong>Effective:</strong> 21 August 2026<br>
-<strong>Last updated:</strong> 21 August 2026</p>
+<strong>Last updated:</strong> 27 September 2026</p>
 <hr />
 <h2>The short version</h2>
 <ul>
@@ -98,7 +98,7 @@ your phone, and so you can sign in on a new one.</p>
 <li><strong>Your username</strong>, as you typed it, plus a lowercased copy used to check that no
   two accounts share a name.</li>
 <li><strong>A hash of your password.</strong> Not the password. We run it through PBKDF2-HMAC-SHA256
-  with 600,000 iterations and a random 16-byte salt, and store only the result. It
+  with 100,000 iterations and a random 16-byte salt, and store only the result. It
   cannot be turned back into your password. We cannot read your password, tell you
   what it was, or email it to you, because we genuinely do not have it.</li>
 <li><strong>A hash of your recovery code</strong>, stored the same way. The code itself is shown to
@@ -132,12 +132,15 @@ anything else in this policy.</p>
 <p><strong>We send DeepSeek only the following, and never anything else:</strong></p>
 <ul>
 <li>which companion you picked, and which language you're using</li>
-<li>which moment in the app you're in (pre-event, evidence, outcome)</li>
+<li>which moment in the app you're in (pre-event, evidence, outcome, insights)</li>
 <li>the event <em>type</em> — the word "exam" or "interview", nothing about which exam</li>
 <li>your dread and reality ratings, and figures our own code calculates from them:
   how many events you've logged, your average dread, your average reality, the
   average gap, how many events you over-predicted, and up to your twenty most
   recent events as type-plus-two-numbers</li>
+<li>the same kind of figures broken down by event type — for each type, how many you
+  logged, the average dread, the average reality, the average gap, and how many
+  ran hotter than reality</li>
 <li>labels our code derives, like whether your gap is narrowing or widening</li>
 <li>if you're using the reappraisal screen, which body sensation you tapped from a
   fixed list of six</li>
@@ -154,6 +157,9 @@ or random install identifier.</p>
 <li>any date, for any event</li>
 <li>your username, your account, or your random install identifier</li>
 </ul>
+<p>If you downloaded Psyched from the China mainland App Store, the app does not ask for
+generated companion text at all, so nothing from it reaches DeepSeek. You see the
+companion lines built into the app instead.</p>
 <p>There is no path in our code from the synced-events database to the code that builds
 model prompts. That separation is enforced by an automated test that fails the build
 if anyone ever wires the two together.</p>
@@ -169,6 +175,13 @@ own logs of your requests.</p>
 <p>Short-lived counters for rate limiting live in Cloudflare KV. Cached companion lines
 are also stored there, keyed by a hash of the ratings that produced them rather than
 by the ratings themselves, and never by anything identifying you.</p>
+<p><strong>If you downloaded Psyched from the China mainland App Store</strong>, new accounts are made
+on a server we run in mainland China, hosted by Alibaba Cloud, instead of on
+Cloudflare. Your account, your synced events, and the sign-in counters described above
+are stored there, in mainland China, and not on Cloudflare. Alibaba Cloud
+operates the infrastructure and can see the network requests that reach it, the same
+way Cloudflare can for everyone else. We don't keep logs of your requests there either.
+An account stays on the server where it was made.</p>
 <p>Apple sees whatever it normally sees when you download an app: your Apple Account
 and purchase records. That's between you and Apple, and we don't get names or email
 addresses from it.</p>
@@ -203,7 +216,9 @@ twice, and then:</p>
 reversible and we cannot get it back for you.</strong> If you want to keep your history,
 save it somewhere else first.</p>
 <p>Cloudflare's own infrastructure backups may hold a copy for a short period before
-rolling off. We don't read them and can't selectively edit them.</p>
+rolling off. We don't read them and can't selectively edit them. For accounts on our
+mainland China server, our nightly backups and Alibaba Cloud disk snapshots may hold a
+copy for up to 14 days before they are deleted.</p>
 <h2>What we don't do</h2>
 <ul>
 <li>No advertising, and no ad networks.</li>
@@ -217,7 +232,8 @@ rolling off. We don't read them and can't selectively edit them.</p>
   from.</li>
 </ul>
 <p>The only third parties in the picture are Apple (app distribution), Cloudflare
-(hosting), and DeepSeek (companion text, with the strict limits described above).</p>
+(hosting), Alibaba Cloud (hosting, for accounts made from the China mainland App Store),
+and DeepSeek (companion text, with the strict limits described above).</p>
 <h2>If you are under 18</h2>
 <p>A lot of people using Psyched are students, and many of them are under 18. Pretending
 otherwise would be dishonest, so here's how that works.</p>
@@ -252,7 +268,7 @@ around them by collecting as little as possible rather than by age-gating you ou
 their own and contain no identifying data. When you delete your account, everything
 tied to it goes at once.</p>
 <h2>Security, honestly</h2>
-<p>We hash passwords with PBKDF2 at 600,000 iterations, compare secrets in constant
+<p>We hash passwords with PBKDF2 at 100,000 iterations, compare secrets in constant
 time, store only hashes of session tokens, and talk to the server over HTTPS only.
 Account deletion is written as explicit deletes inside a single transaction rather
 than relying on database cascade rules to fire.</p>
