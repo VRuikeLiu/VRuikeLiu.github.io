@@ -49,8 +49,8 @@ footer{margin-top:4rem;padding-top:1.5rem;border-top:1px solid var(--rule);
 <div class="wrap">
 <div class="crumb"><a href="/psyched/">Psyched</a> &middot; <a href="/">vruikeliu.github.io</a></div>
 <h1>Psyched Privacy Policy</h1>
-<p><strong>Effective:</strong> 21 August 2026
-<strong>Last updated:</strong> 27 September 2026</p>
+<p><strong>Effective:</strong> 21 August 2026<br>
+<strong>Last updated:</strong> 5 October 2026</p>
 <h2>The short version</h2>
 <ul>
 <li>Psyched works with no account at all. If you never make one, nothing you write
@@ -86,6 +86,10 @@ you have any network connection.</p>
 <li>Cached companion lines, so the same screen doesn't regenerate text repeatedly.</li>
 <li>If you sign in, your session token, stored in the iOS Keychain rather than in
   ordinary app storage, because it is a credential.</li>
+<li>If you make an account, its recovery code, saved to your iCloud Keychain. Apple
+  syncs it, end-to-end encrypted, to your other devices signed in to the same Apple
+  Account; with iCloud Keychain off it stays on this iPhone. It goes from our server
+  to your keychain once, when it is issued, and we never see it again.</li>
 </ul>
 <p>Reminder notifications are scheduled locally by iOS. The notification text contains
 your event title, and it never leaves your device to be delivered.</p>
@@ -100,8 +104,8 @@ your phone, and so you can sign in on a new one.</p>
   with 100,000 iterations and a random 16-byte salt, and store only the result. It
   cannot be turned back into your password. We cannot read your password, tell you
   what it was, or email it to you, because we genuinely do not have it.</li>
-<li><strong>A hash of your recovery code</strong>, stored the same way. The code itself is shown to
-  you once, at signup, and never again.</li>
+<li><strong>A hash of your recovery code</strong>, stored the same way. The app saves the code itself
+  to your iCloud Keychain when you sign up; we keep only the hash.</li>
 <li>The time the account was created and last changed.</li>
 </ul>
 <p>Once you're signed in, the app syncs your events to our server. <strong>A synced event
@@ -202,13 +206,17 @@ in again. Signing out deletes that one session. Using your recovery code invalid
 every session on every device.</p>
 <h2>If you lose your password</h2>
 <p>There is no password reset by email, because we never collect an email. There is no
-SMS reset, because we never collect a phone number. The recovery code you were shown
-at signup is the only way back in.</p>
+SMS reset, because we never collect a phone number. Instead, the app resets your
+password with the recovery code in your iCloud Keychain: tap "Forgot password?" on
+any device that keychain reaches and choose a new password. Each reset replaces the
+code with a new one, saved the same way. Accounts made before the app saved codes to
+iCloud Keychain were shown the code once at signup, and that code still works.</p>
 <p><strong>If you lose your password and your recovery code, your account cannot be
-recovered by anyone, including us.</strong> We cannot verify who you are, so we will not
-hand over an account to someone who asks nicely. This is a deliberate design choice
-and the cost of not collecting your contact details. Write the recovery code down
-somewhere real.</p>
+recovered by anyone, including us.</strong> That happens if your devices with the code are
+all gone and iCloud Keychain was off, or if you delete it from your keychain. We
+cannot verify who you are, so we will not hand over an account to someone who asks
+nicely. This is a deliberate design choice and the cost of not collecting your
+contact details.</p>
 <p>Your history is still on your phone in that situation. It's the server copy and the
 username that are gone.</p>
 <h2>Deleting your account</h2>
