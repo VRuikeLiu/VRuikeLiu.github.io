@@ -462,7 +462,7 @@ section { scroll-margin-top: 72px; }
   gap: 8px;
   align-content: start;
 }
-.panel .ico { width: 20px; height: 20px; color: var(--ink-3); margin-bottom: 8px; }
+.panel .ico { width: 18px; height: 18px; color: var(--ink-3); margin-bottom: 8px; }
 .panel h3 { font-size: 20px; }
 .panel p { color: var(--ink-2); font-size: 16px; }
 
@@ -495,6 +495,51 @@ footer { border-top: 1px solid var(--line); padding-top: 40px; padding-bottom: c
 .foot-meta { font-size: 12px; color: var(--ink-3); line-height: 1.8; }
 .foot-meta .email { user-select: all; }
 
+/* Research: one quiet list, newest study first */
+.ev-meta { margin-top: 16px; }
+@media (min-width: 960px) { .on-phone { display: none; } }
+.evidence { margin-top: 40px; }
+.ev-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.study { display: grid; gap: 8px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.study h4 { margin: 0; font-size: 18px; font-weight: 500; line-height: 24px; text-wrap: balance; }
+.study .found { color: var(--ink-2); font-size: 16px; }
+.study .in-app { display: grid; gap: 4px; font-size: 16px; color: var(--ink); }
+.study .in-app .mono { font-size: 12px; color: var(--ink-3); }
+.cites { display: grid; gap: 4px; justify-items: start; }
+.cite {
+  display: inline-block;
+  padding-block: 4px;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--ink-3);
+  text-decoration: none;
+  transition: color 140ms var(--ease);
+}
+.cite svg { display: inline-block; width: 12px; height: 12px; margin-left: 4px; vertical-align: -1px; }
+/* On phones each study folds to its headline and citation; tap to read the finding */
+.study-toggle {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 10px 0;
+  margin: -10px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.study-toggle svg { flex: none; width: 18px; height: 18px; margin-top: 3px; color: var(--ink-3); transition: transform 180ms var(--ease); }
+.study-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.study.is-folded .found, .study.is-folded .in-app { display: none; }
+.cite:hover { color: var(--dread); text-decoration: underline; text-underline-offset: 3px; }
+.ev-list .study:last-child { border-bottom: 0; }
+
 /* Wider screens */
 @media (min-width: 720px) {
   .hero h1 { font-size: 52px; }
@@ -516,6 +561,11 @@ footer { border-top: 1px solid var(--line); padding-top: 40px; padding-bottom: c
   .trailer { width: 100%; }
   .closer h2 { font-size: 48px; }
   .foot { grid-template-columns: 1fr auto; align-items: end; }
+  .study { grid-template-columns: 1.15fr 1fr; grid-template-areas: "h app" "found app" "cites app"; column-gap: 40px; row-gap: 8px; align-items: start; }
+  .study h4 { grid-area: h; }
+  .study .found { grid-area: found; }
+  .study .in-app { grid-area: app; padding-top: 2px; }
+  .study .cites { grid-area: cites; }
 }
 </style>
 </head>
@@ -637,6 +687,78 @@ footer { border-top: 1px solid var(--line); padding-top: 40px; padding-bottom: c
     </div>
   </section>
 
+  <section class="section" id="research" aria-labelledby="research-title">
+    <div class="wrap">
+      <h2 id="research-title">Why it works this way</h2>
+      <p class="lede">Each step in Psyched traces back to a published study. Here is what the researchers found, and the part of the app it shaped.<span class="on-phone"> Tap a study to read it.</span></p>
+      <p class="facts mono ev-meta"><span>11 papers</span><span>1977 to 2026</span><span>Each linked to the original</span></p>
+      <div class="evidence">
+        <ol class="ev-list">
+          <li class="study">
+            <h4>Checking whether a worry came true beat just writing it down</h4>
+            <p class="found">Over ten days, people who went back to see whether each worry had happened ended up worrying less than people who only logged their thoughts. A 2026 phone-app trial from the same lab found the same pattern.</p>
+            <p class="in-app"><span class="mono">In Psyched</span>An event joins your chart only once it has both numbers, and Today keeps asking about events still missing an outcome.</p>
+            <div class="cites"><a class="cite mono" href="https://pubmed.ncbi.nlm.nih.gov/41946300/">Schwob &amp; Newman · 2026 · Journal of Anxiety Disorders<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><a class="cite mono" href="https://doi.org/10.1002/da.22507">LaFreniere &amp; Newman · 2016 · Depression and Anxiety<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+          </li>
+          <li class="study">
+            <h4>Comparing the prediction with what happened made practice count</h4>
+            <p class="found">249 adults who feared public speaking gave a series of speeches. Those who compared what they expected with what actually happened ended up less fearful than those who only spoke.</p>
+            <p class="in-app"><span class="mono">In Psyched</span>That comparison is the reality rating. Giving the talk is the practice; rating it afterward turns it into evidence.</p>
+            <div class="cites"><a class="cite mono" href="https://doi.org/10.1037/ccp0000953">Johnco, Norberg, Wuthrich &amp; Rapee · 2025 · Journal of Consulting and Clinical Psychology<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+          </li>
+          <li class="study">
+            <h4>Improvement tracked how far the prediction came down</h4>
+            <p class="found">Across 8,484 practice exercises from 605 patients, the people whose feared predictions dropped the most improved the most.</p>
+            <p class="in-app"><span class="mono">In Psyched</span>Before the next event, Psyched quotes your own past gap back to you, right as the next prediction is made.</p>
+            <div class="cites"><a class="cite mono" href="https://doi.org/10.1177/21677026221101379">Pittig et al. · 2023 · Clinical Psychological Science<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+          </li>
+          <li class="study">
+            <h4>“I’m excited” beat trying to settle down</h4>
+            <p class="found">Across karaoke, public speaking and a math task, people who called their nerves excitement did better than people told to settle down or given no instruction.</p>
+            <p class="in-app"><span class="mono">In Psyched</span>The protocol’s one line is “I’m not nervous. I’m ready.” Nothing in the last minute asks you to slow down.</p>
+            <div class="cites"><a class="cite mono" href="https://doi.org/10.1037/a0035325">Brooks · 2014 · Journal of Experimental Psychology: General<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+          </li>
+          <li class="study">
+            <h4>What you believe about pressure changes what it does</h4>
+            <p class="found">People who saw pressure as enhancing reported better health and work outcomes, and a few short videos were enough to shift that belief.</p>
+            <p class="in-app"><span class="mono">In Psyched</span>Psyched never treats your body’s response as a malfunction, and it never praises you for low numbers.</p>
+            <div class="cites"><a class="cite mono" href="https://doi.org/10.1037/a0031201">Crum, Salovey &amp; Achor · 2013 · Journal of Personality and Social Psychology<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+          </li>
+          <li class="study">
+            <h4>The body’s response changed too</h4>
+            <p class="found">People who read their arousal as useful showed a more efficient heart and blood-flow pattern under pressure, and their attention was pulled less toward threats.</p>
+            <p class="in-app"><span class="mono">In Psyched</span>Step two names the mechanism, a heart pushing oxygen to your brain and muscles, because that is what makes the relabelling believable.</p>
+            <div class="cites"><a class="cite mono" href="https://doi.org/10.1037/a0025719">Jamieson, Nock &amp; Mendes · 2012 · Journal of Experimental Psychology: General<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+          </li>
+          <li class="study">
+            <h4>Relabeling nerves showed up in the score</h4>
+            <p class="found">Students told that a racing heart helps them scored higher on a practice GRE math section, and on their real GRE math scores one to three months later.</p>
+            <p class="in-app"><span class="mono">In Psyched</span>Step two explains what your body is doing and asks you to read it as readiness, in the minutes before you start.</p>
+            <div class="cites"><a class="cite mono" href="https://pubmed.ncbi.nlm.nih.gov/20161454/">Jamieson, Mendes, Blackstock &amp; Schmader · 2010 · Journal of Experimental Social Psychology<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+          </li>
+          <li class="study">
+            <h4>Worry competes for the attention the task needs</h4>
+            <p class="found">Attentional control theory: worry pulls attention toward threats, so the same work costs more effort, most of all on tasks that depend on focus.</p>
+            <p class="in-app"><span class="mono">In Psyched</span>Step four asks for one concrete first move, and the whole protocol takes 60 to 90 seconds instead of a long routine.</p>
+            <div class="cites"><a class="cite mono" href="https://doi.org/10.1037/1528-3542.7.2.336">Eysenck, Derakshan, Santos &amp; Calvo · 2007 · Emotion<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+          </li>
+          <li class="study">
+            <h4>People over-predict how bad it will feel</h4>
+            <p class="found">When forecasting a future event, we tend to overestimate how strong the feeling will be and how long it will last.</p>
+            <p class="in-app"><span class="mono">In Psyched</span>This is why you rate dread before and reality after. Your chart is a personal test of the bias, and if your dread turns out accurate, the chart says so.</p>
+            <div class="cites"><a class="cite mono" href="https://doi.org/10.1111/j.0963-7214.2005.00355.x">Wilson &amp; Gilbert · 2005 · Current Directions in Psychological Science<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+          </li>
+          <li class="study">
+            <h4>Your own track record is the strongest evidence</h4>
+            <p class="found">Of the sources of belief in your own ability, having actually done it outweighs being told you’ll be fine.</p>
+            <p class="in-app"><span class="mono">In Psyched</span>Step three shows your numbers, like “You rated the last exam an 8. It came in at a 4,” instead of saying “you’ve got this.”</p>
+            <div class="cites"><a class="cite mono" href="https://doi.org/10.1037/0033-295X.84.2.191">Bandura · 1977 · Psychological Review<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="companions" aria-labelledby="crew-title">
     <div class="wrap">
       <h2 id="crew-title">Pick who talks you through it</h2>
@@ -747,6 +869,7 @@ footer { border-top: 1px solid var(--line); padding-top: 40px; padding-bottom: c
     </div>
     <nav class="foot-links" aria-label="Footer">
       <a href="https://apps.apple.com/us/app/psyched-dread-vs-reality/id6802581272">App Store</a>
+      <a href="#research">Research</a>
       <a href="https://vruikeliu.github.io/psyched/android/Psyched-1.4.apk">Android (APK)</a>
       <a href="https://vruikeliu.github.io/psyched/">Support</a>
       <a href="https://vruikeliu.github.io/psyched/privacy">Privacy</a>
@@ -808,6 +931,43 @@ footer { border-top: 1px solid var(--line); padding-top: 40px; padding-bottom: c
       requestAnimationFrame(tick);
     }, 1250);
   }
+
+  // Research: on phones, fold each study to its headline and citation.
+  var narrow = window.matchMedia("(max-width: 959px)");
+  var chevron = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+  var studies = Array.prototype.slice.call(document.querySelectorAll(".study"));
+  studies.forEach(function (li, i) {
+    var h = li.querySelector("h4");
+    var body = li.querySelector(".found");
+    body.id = body.id || "study-" + i;
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "study-toggle";
+    btn.setAttribute("aria-controls", body.id);
+    btn.innerHTML = "<span>" + h.innerHTML + "</span>" + chevron;
+    btn.addEventListener("click", function () {
+      var open = btn.getAttribute("aria-expanded") !== "true";
+      btn.setAttribute("aria-expanded", String(open));
+      li.classList.toggle("is-folded", !open);
+    });
+    li._h = h.innerHTML;
+    li._btn = btn;
+  });
+  function applyFold() {
+    studies.forEach(function (li) {
+      var h = li.querySelector("h4");
+      if (narrow.matches) {
+        if (!h.contains(li._btn)) { h.textContent = ""; h.appendChild(li._btn); }
+        li._btn.setAttribute("aria-expanded", "false");
+        li.classList.add("is-folded");
+      } else {
+        h.innerHTML = li._h;
+        li.classList.remove("is-folded");
+      }
+    });
+  }
+  applyFold();
+  if (narrow.addEventListener) narrow.addEventListener("change", applyFold);
 
   // Hairline under the header once the page scrolls.
   var nav = document.querySelector(".nav");
