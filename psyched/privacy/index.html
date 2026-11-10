@@ -50,20 +50,25 @@ footer{margin-top:4rem;padding-top:1.5rem;border-top:1px solid var(--rule);
 <div class="crumb"><a href="/psyched/">Psyched</a> &middot; <a href="/">vruikeliu.github.io</a></div>
 <h1>Psyched Privacy Policy</h1>
 <p><strong>Effective:</strong> 21 August 2026<br>
-<strong>Last updated:</strong> 5 October 2026</p>
+<strong>Last updated:</strong> 10 November 2026</p>
 <h2>The short version</h2>
 <ul>
-<li>Psyched works with no account at all. If you never make one, nothing you write
-  leaves your phone.</li>
-<li>If you make an account, everything you write in the app is copied to a database
-  we run so you can get it back on another phone. That includes event titles, the
-  fear you wrote down, and your notes afterwards.</li>
+<li>Psyched works with no account at all. If you never make one, nothing you write is
+  sent to our servers. It stays on your phone, in your phone's own backup, and, only
+  if you turn on "Sync with iCloud", in your own iCloud.</li>
+<li>If you make an account, everything you write while signed in is copied to a
+  database we run so you can get it back on another phone. That includes event
+  titles, the fear you wrote down, and your notes afterwards.</li>
 <li>The AI model that writes the companion lines never sees any of your writing. It
   gets event types and your 0–10 ratings, and nothing else. This is the one claim
-  in this policy we care most about being exactly true.</li>
+  in this policy we care most about being exactly true. You can also switch the
+  AI-written lines off in Settings, and then nothing is sent to it at all.</li>
 <li>You can delete your account inside the app. It really deletes. There is no undo.</li>
 <li>No ads. No analytics SDKs. No trackers. Nothing sold to anybody, ever.</li>
 </ul>
+<p>This policy covers the Psyched app on iPhone and on Android, and the Psyched pages
+on our website. Where the two apps differ, the section "If you use the Android app"
+says how.</p>
 <h2>What Psyched is</h2>
 <p>Psyched is a performance psychology tool. You log something you're about to do,
 rate how bad you expect it to be, then rate how bad it actually was, and the app
@@ -74,25 +79,49 @@ diagnose anything, treat anything, or give clinical advice.</p>
 <p>Psyched is published by Ruike Liu. For anything about your data,
 write to PsychedSupportTeam@gmail.com.</p>
 <h2>What stays on your phone</h2>
-<p>Your events live on your device in Apple's SwiftData store. That's the real copy.
-The app reads and writes it whether or not you have an account, and whether or not
-you have any network connection.</p>
-<p>Also stored on your device, in standard iOS app storage:</p>
+<p>Your events live on your device in the app's own database (Apple's SwiftData on
+iPhone). That's the real copy. The app reads and writes it whether or not you have an
+account, and whether or not you have any network connection.</p>
+<p>Also stored on your device, in standard app storage:</p>
 <ul>
-<li>Which companion character you picked, and your language choice.</li>
+<li>Which companion character you picked, your language choice, whether AI-written
+  companion lines are on, and whether "Sync with iCloud" is on.</li>
+<li>The country of the App Store you downloaded Psyched from, which the app uses to
+  choose which of our servers to talk to.</li>
 <li>A random identifier generated once when you install the app. It is not linked to
-  you, your name, or your Apple Account. It exists so our server can rate limit
-  requests per install and return you the same companion line if a request retries.</li>
-<li>Cached companion lines, so the same screen doesn't regenerate text repeatedly.</li>
+  you, your name, or your Apple Account. It exists so our server can limit how many
+  companion lines one install asks for in a day.</li>
+<li>If you sign in: your username, an account ID, when your session expires, which of
+  our servers holds the account, and bookkeeping for sync (when it last ran and
+  where it left off).</li>
 <li>If you sign in, your session token, stored in the iOS Keychain rather than in
   ordinary app storage, because it is a credential.</li>
 <li>If you make an account, its recovery code, saved to your iCloud Keychain. Apple
   syncs it, end-to-end encrypted, to your other devices signed in to the same Apple
-  Account; with iCloud Keychain off it stays on this iPhone. It goes from our server
-  to your keychain once, when it is issued, and we never see it again.</li>
+  Account; with iCloud Keychain off it stays on this iPhone. Our server sends the
+  code to your phone when it is issued and keeps only a hash of it. The code comes
+  back to us only if you use it to reset your password, and that reset replaces it
+  with a new one.</li>
 </ul>
+<p>Companion lines the app has already fetched are held in memory while it is open, so
+the same screen doesn't ask for the same text twice. They are not written to disk.</p>
 <p>Reminder notifications are scheduled locally by iOS. The notification text contains
 your event title, and it never leaves your device to be delivered.</p>
+<p>Like any app's data, all of this is included in your phone's own backup (an iCloud
+Backup, or a backup to your computer) if you have one switched on. That backup is
+between you and Apple; we can't see it.</p>
+<h2>If you turn on iCloud sync</h2>
+<p>On iPhone, Settings has a "Sync with iCloud" switch. It is off by default, and it has
+nothing to do with a Psyched account: you can use either, both, or neither.</p>
+<p>If you turn it on, your events are copied to your own private iCloud storage, tied to
+your Apple Account, so they appear on your other Apple devices. <strong>That copy includes
+everything in each event, including the free text you wrote</strong>, the same list as under
+"What happens if you make an account" below. It travels straight between your phone
+and Apple. It never passes through our servers, we cannot read it, and it is covered
+by Apple's privacy policy.</p>
+<p>Turning the switch off stops the copying. What is already in your iCloud stays there
+until you delete it, which you can do in the iPhone's Settings, under your name and
+iCloud, where iCloud storage is managed.</p>
 <h2>What happens if you make an account</h2>
 <p>An account is optional. It exists for one reason: so your history survives losing
 your phone, and so you can sign in on a new one.</p>
@@ -108,8 +137,10 @@ your phone, and so you can sign in on a new one.</p>
   to your iCloud Keychain when you sign up; we keep only the hash.</li>
 <li>The time the account was created and last changed.</li>
 </ul>
-<p>Once you're signed in, the app syncs your events to our server. <strong>A synced event
-includes everything in it, including the free text you wrote:</strong></p>
+<p>Once you're signed in, the app syncs the events you log while signed in to our
+server. Events you logged before making an account, or while signed out, belong to the
+phone's signed-out profile: they stay on the phone and are never uploaded. <strong>A synced
+event includes everything in it, including the free text you wrote:</strong></p>
 <ul>
 <li>the event title</li>
 <li>the event type (exam, quiz, presentation, interview, tryout, other)</li>
@@ -128,9 +159,26 @@ includes everything in it, including the free text you wrote:</strong></p>
 If you sign in, the sentences you write in Psyched sit in a database we run. If you
 would rather they never did, don't make an account — the app is fully usable without
 one and we designed it that way on purpose.</p>
-<p>Our server also briefly records failed sign-in attempts against your username and
-against the network address you connected from, so somebody can't sit there guessing
-passwords. Those counters expire on their own and are not part of your account.</p>
+<p>So that somebody can't sit there guessing passwords or usernames, our server keeps
+three kinds of counter:</p>
+<ul>
+<li>failed sign-in and failed recovery attempts against a username, counted over 15
+  minutes</li>
+<li>failed sign-in and failed recovery attempts from a network address (IP address),
+  counted over 15 minutes</li>
+<li>requests to create an account from a network address, counted over an hour. Every
+  such request is counted, including the successful one that made your account.</li>
+</ul>
+<p>Each counter is one row holding the username or the network address, a count, and the
+time its current window started. Nothing in a row says which account it belongs to.
+The username counter is deleted when you sign in successfully and when you delete
+your account. <strong>The network-address rows are not deleted on a schedule.</strong> A row
+starts again from one the next time that address trips it, and otherwise stays in the
+database. So we hold a list of network addresses that have tried to create an account
+or failed to sign in, each with the time of its latest window. An address that
+created an account has a row whose time is close to the time that account was
+created, which means someone with access to our database could often work out which
+address made which account.</p>
 <h2>What DeepSeek sees</h2>
 <p>The companion characters are written by DeepSeek, an AI model provider based in
 China. Their servers are outside our control, so what we send them matters more than
@@ -138,12 +186,16 @@ anything else in this policy.</p>
 <p><strong>We send DeepSeek only the following, and never anything else:</strong></p>
 <ul>
 <li>which companion you picked, and which language you're using</li>
-<li>which moment in the app you're in (pre-event, evidence, outcome, insights)</li>
+<li>which moment in the app you're in: the body check-in or the evidence step of the
+  pre-event protocol, the outcome screen, or one of the two readings on Insights</li>
 <li>the event <em>type</em> — the word "exam" or "interview", nothing about which exam</li>
-<li>your dread and reality ratings, and figures our own code calculates from them:
-  how many events you've logged, your average dread, your average reality, the
-  average gap, how many events you over-predicted, and up to your twenty most
-  recent events as type-plus-two-numbers</li>
+<li>for the short companion lines on the protocol and outcome screens, your ratings
+  only as rough bands: whether your dread was low, medium or high, and whether
+  reality came in under, over or close to it. The exact numbers stay on your phone.</li>
+<li>for the two Insights readings, your exact dread and reality ratings and figures
+  our own code calculates from them: how many events you've logged, your average
+  dread, your average reality, the average gap, how many events you over-predicted,
+  and up to your twenty most recent events as type-plus-two-numbers</li>
 <li>the same kind of figures broken down by event type — for each type, how many you
   logged, the average dread, the average reality, the average gap, and how many
   ran hotter than reality</li>
@@ -165,12 +217,27 @@ event.</p>
 <li>any date, for any event</li>
 <li>your username, your account, or your random install identifier</li>
 </ul>
+<p><strong>You can switch this off.</strong> In Settings, under AI, turn off "AI-written companion
+lines". From then on the app asks for no generated text at all, so nothing from it
+reaches DeepSeek, and your companion speaks in the lines built into the app and skips
+its comment on the next-move card. Everything else, including your chart, works
+exactly the same.</p>
 <p>If you downloaded Psyched from the China mainland App Store, the app does not ask for
 generated companion text at all, so nothing from it reaches DeepSeek. You see the
-companion lines built into the app instead.</p>
-<p>There is no path in our code from the synced-events database to the code that builds
-model prompts. That separation is enforced by an automated test that fails the build
-if anyone ever wires the two together.</p>
+companion lines built into the app instead. The app learns which App Store it came
+from a moment after its first launch. Until then it goes by your phone's region
+setting, so a phone set to mainland China is treated as a China mainland download
+from the first second, and a phone set to any other region may ask for a generated
+line before the App Store has answered.</p>
+<p>Requests for generated text go to our server, which talks to DeepSeek. DeepSeek never
+receives your network address or anything else about your phone. Our server builds
+each prompt from scratch out of the items listed above: every choice must match a
+fixed list and every number must be in range, or the request is refused, and anything
+else in a request is ignored. The code that handles accounts and synced events and
+the code that builds prompts are separate parts of the server that do not call each
+other, so there is no path from the synced-events database to a prompt. That
+separation is kept by how the code is organised and reviewed; no automated check
+enforces it yet.</p>
 <p>Everything the model writes back is checked by our own code before you see it, and
 anything that reads as clinical language, invents a number we didn't supply, or
 breaks character is thrown away and replaced with a line built into the app.</p>
@@ -179,16 +246,26 @@ breaks character is thrown away and replaced with a line built into the app.</p>
 in the Western North America (<code>wnam</code>) region, reached through a Cloudflare Worker. Cloudflare
 operates the infrastructure and can see the network requests that reach it,
 including your IP address, in the ordinary way any web host does. We don't keep our
-own logs of your requests.</p>
-<p>Short-lived counters for rate limiting live in Cloudflare KV. Cached companion lines
-are also stored there, keyed by a hash of the ratings that produced them rather than
-by the ratings themselves, and never by anything identifying you.</p>
+own logs of your requests. The one place our own database records a network address
+is the sign-in and sign-up counters described under "What happens if you make an
+account."</p>
+<p>Requests for companion lines go through the same Cloudflare Worker whether or not you
+have an account. To cap how many lines one install can ask for in a day, the Worker
+keeps a counter in Cloudflare KV under your random install identifier and the date.
+It holds a number, nothing about what you asked for, and expires after two days.</p>
+<p>Generated lines are cached in Cloudflare KV for 30 days so the same situation doesn't
+have to be written twice. A cached line is stored under the inputs that produced it
+and never under anything identifying you: the short companion lines under the plain
+combination (companion, language, moment, event type, rating bands), and the Insights
+readings under a hash of the figures that produced them.</p>
 <p><strong>If you downloaded Psyched from the China mainland App Store</strong>, new accounts are made
 on a server we run in mainland China, hosted by Alibaba Cloud, instead of on
 Cloudflare. Your account, your synced events, and the sign-in counters described above
 are stored there, in mainland China, and not on Cloudflare. Alibaba Cloud
 operates the infrastructure and can see the network requests that reach it, the same
-way Cloudflare can for everyone else. We don't keep logs of your requests there either.
+way Cloudflare can for everyone else. We don't keep logs of your requests there
+either: the web server's request log is switched off. Its error log is on, and a
+request that fails can leave a line there with the network address it came from.
 If you made your account from the China mainland App Store before version 1.2, when
 accounts there could only be made on Cloudflare, the app moves it — your username,
 password, and synced events — to the mainland China server the next time it can reach
@@ -203,7 +280,10 @@ never stores the token itself, only a SHA-256 hash of it, so a leak of our datab
 would not hand anyone a working login.</p>
 <p><strong>A session expires 90 days after you sign in.</strong> After that the app asks you to sign
 in again. Signing out deletes that one session. Using your recovery code invalidates
-every session on every device.</p>
+every session on every device. A session that simply expires stops working, but its
+record (the hash, your account ID, and its start and end times) stays in the
+database until you reset your password with your recovery code or delete your
+account.</p>
 <h2>If you lose your password</h2>
 <p>There is no password reset by email, because we never collect an email. There is no
 SMS reset, because we never collect a phone number. Instead, the app resets your
@@ -226,8 +306,14 @@ twice, and then:</p>
 <li>every event of yours on the server is deleted, including the free text</li>
 <li>every session of yours is deleted</li>
 <li>your user record, with your username and both hashes, is deleted</li>
-<li>the app clears your local store and returns to how it looked on first launch</li>
+<li>the username sign-in counter described earlier is deleted</li>
+<li>on your phone, the app deletes that account's events, their reminders, and the
+  saved recovery code, and signs you out</li>
 </ul>
+<p>Events you logged while signed out, your companion and language choices, and the
+random install identifier stay on the phone. If "Sync with iCloud" is on, the
+deletion of those events carries through to the copy in your iCloud. The
+network-address counters are not tied to your account and are not removed.</p>
 <p>This is a hard delete, not a "deactivated" flag we could restore. <strong>It is not
 reversible and we cannot get it back for you.</strong> If you want to keep your history,
 save it somewhere else first.</p>
@@ -235,6 +321,14 @@ save it somewhere else first.</p>
 rolling off. We don't read them and can't selectively edit them. For accounts on our
 mainland China server, our nightly backups and Alibaba Cloud disk snapshots may hold a
 copy for up to 14 days before they are deleted.</p>
+<h2>Links to other services</h2>
+<p>The Toolkit tab links to research papers, and its Get support page lists helplines
+and websites run by other organisations. Tapping one opens Phone, Messages, WhatsApp
+or your browser. Psyched sends nothing about you when you do, and has no arrangement
+with any of them; once you call, text, message or visit, that organisation's own
+privacy policy applies (and WhatsApp's, for a WhatsApp link). Nothing on these pages
+reads your events, and nothing on them is generated by an AI while you use the app:
+the text ships with the app, and nothing from these pages is sent to an AI provider.</p>
 <h2>What we don't do</h2>
 <ul>
 <li>No advertising, and no ad networks.</li>
@@ -249,9 +343,40 @@ copy for up to 14 days before they are deleted.</p>
 <li>No profile-building across other apps or websites. There is nothing to build one
   from.</li>
 </ul>
-<p>The only third parties in the picture are Apple (app distribution), Cloudflare
-(hosting), Alibaba Cloud (hosting, for accounts made from the China mainland App Store),
-and DeepSeek (companion text, with the strict limits described above).</p>
+<p>The only third parties in the picture are Apple (app distribution, and iCloud if you
+use iCloud sync or iCloud Keychain), Cloudflare (hosting), Alibaba Cloud (hosting, for
+accounts made from the China mainland App Store), and DeepSeek (companion text, with
+the strict limits described above). On Android, Google takes Apple's place for backup
+and for saving your recovery code. Our website is served by GitHub, and one page on
+it loads fonts from Google.</p>
+<h2>If you use the Android app</h2>
+<p>Psyched for Android is a separate download from our website. It follows everything in
+this policy, with these differences:</p>
+<ul>
+<li>There is no iCloud sync. Your events live in the app's database on the phone.</li>
+<li>If Android's own backup is on, your events and settings are included in your
+  Google Account's backup and in a phone-to-phone transfer, like any app's data.
+  Your session token and the on-device copy of your recovery code are left out of
+  both.</li>
+<li>Your session token is encrypted with a key held in the Android Keystore, which
+  never leaves the phone.</li>
+<li>Your recovery code is saved with Google's Block Store, so it can come back when
+  you restore a backup onto a new phone. That copy is held by Google under your
+  Google Account, not by us.</li>
+<li>There is no App Store country to read, so the app goes by your phone's region
+  setting. A phone set to mainland China uses our mainland China server and asks for
+  no AI-written lines.</li>
+<li>The only permissions it asks for are notifications and exact alarms, for the
+  reminder before each event, plus restarting those reminders after the phone
+  reboots.</li>
+</ul>
+<h2>The website</h2>
+<p>The Psyched pages at vruikeliu.github.io (the app's page, the support page, this
+policy, and the Terms) are plain pages hosted on GitHub Pages. They set no cookies
+and have no analytics, no visit counter, and no trackers. GitHub, as the host, sees
+the ordinary request your browser makes, including your IP address, under GitHub's
+own privacy statement. The app's page loads its fonts from Google Fonts, so Google
+sees that request too. The website never receives anything from the app.</p>
 <h2>If you are under 18</h2>
 <p>A lot of people using Psyched are students, and many of them are under 18. Pretending
 otherwise would be dishonest, so here's how that works.</p>
@@ -273,18 +398,27 @@ otherwise would be dishonest, so here's how that works.</p>
 around them by collecting as little as possible rather than by age-gating you out.</p>
 <h2>What you can do</h2>
 <ul>
-<li>Use the app with no account, in which case none of the server sections apply to you.</li>
+<li>Use the app with no account, in which case none of the account sections apply to
+  you. Switch off AI-written companion lines as well, and the app contacts our
+  servers for nothing at all.</li>
 <li>See everything we hold, by opening the app — the synced copy is the same as the
   copy on your phone.</li>
-<li>Delete individual events, which removes them from the server too.</li>
+<li>Delete individual events. Deleting a synced event empties its copy on the server:
+  the title, the fear, the notes and the ratings are erased, and a blank marker
+  saying "this event was deleted" stays so your other phones remove it too.</li>
 <li>Delete your whole account and all of it, from Settings.</li>
 <li>Ask us anything at PsychedSupportTeam@gmail.com.</li>
 </ul>
 <h2>How long we keep things</h2>
-<p>While your account exists, we keep your events so sync works. Sessions expire after
-90 days. Rate-limiting counters expire within hours. Cached companion lines expire on
-their own and contain no identifying data. When you delete your account, everything
-tied to it goes at once.</p>
+<p>While your account exists, we keep your events so sync works. Sessions stop working
+after 90 days; an expired session's record is removed when you reset your password
+with your recovery code or delete your account. The daily counter for companion-line
+requests expires after two days. The sign-in and sign-up counters are kept as
+described under "What happens if you make an account": the username one is deleted
+when you sign in or delete your account, and the network-address ones are not
+deleted on a schedule. Cached companion lines expire after 30 days and contain no
+identifying data. When you delete your account, your events, your sessions, your user
+record and your username counter go at once.</p>
 <h2>Security, honestly</h2>
 <p>We hash passwords with PBKDF2 at 100,000 iterations, compare secrets in constant
 time, store only hashes of session tokens, and talk to the server over HTTPS only.
