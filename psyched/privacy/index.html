@@ -50,19 +50,30 @@ footer{margin-top:4rem;padding-top:1.5rem;border-top:1px solid var(--rule);
 <div class="crumb"><a href="/psyched/">Psyched</a> &middot; <a href="/">vruikeliu.github.io</a></div>
 <h1>Psyched Privacy Policy</h1>
 <p><strong>Effective:</strong> 21 August 2026<br>
-<strong>Last updated:</strong> 10 November 2026</p>
+<strong>Last updated:</strong> 13 November 2026</p>
+<p>This version describes Psyched 1.6 for iPhone. Where older versions behave
+differently, or where the Android app (still version 1.4) hasn't caught up yet, we
+say so in place.</p>
 <h2>The short version</h2>
 <ul>
 <li>Psyched works with no account at all. If you never make one, nothing you write is
   sent to our servers. It stays on your phone, in your phone's own backup, and, only
   if you turn on "Sync with iCloud", in your own iCloud.</li>
-<li>If you make an account, everything you write while signed in is copied to a
-  database we run so you can get it back on another phone. That includes event
-  titles, the fear you wrote down, and your notes afterwards.</li>
-<li>The AI model that writes the companion lines never sees any of your writing. It
-  gets event types and your 0–10 ratings, and nothing else. This is the one claim
-  in this policy we care most about being exactly true. You can also switch the
-  AI-written lines off in Settings, and then nothing is sent to it at all.</li>
+<li>If you make an account, your events are copied to a database we run so you can get
+  them back on another phone. From version 1.6 on iPhone, the things you type into an
+  event (its title, your focus intention, the fear you wrote down and your notes
+  afterwards) are encrypted on your phone before they are sent, with a key we never
+  hold. Our server stores them in a form it cannot read. Dates, event types, ratings,
+  the body sensations you tap, and your username stay readable to us, because sync
+  needs them.</li>
+<li>AI-written companion lines are off unless you turn them on (from version 1.6).
+  If you do, the AI model gets event types, your 0–10 ratings and figures worked out
+  from them, the body sensation you tap, and a few app settings, and never any of
+  your writing. The exact list is under "What DeepSeek
+  sees". This is the one claim in this policy we care most about being exactly
+  true. Installs from the China mainland App Store never ask for AI-written text.</li>
+<li>You must be 13 or older to make an account. The app asks your date of birth once
+  to check, and nobody keeps it.</li>
 <li>You can delete your account inside the app. It really deletes. There is no undo.</li>
 <li>No ads. No analytics SDKs. No trackers. Nothing sold to anybody, ever.</li>
 </ul>
@@ -90,10 +101,11 @@ account, and whether or not you have any network connection.</p>
   choose which of our servers to talk to.</li>
 <li>A random identifier generated once when you install the app. It is not linked to
   you, your name, or your Apple Account. It exists so our server can limit how many
-  companion lines one install asks for in a day.</li>
+  companion lines one install asks for in a day, and it is sent only with requests
+  for AI-written lines.</li>
 <li>If you sign in: your username, an account ID, when your session expires, which of
   our servers holds the account, and bookkeeping for sync (when it last ran and
-  where it left off).</li>
+  where it left off) and for encryption (whether it is set up yet).</li>
 <li>If you sign in, your session token, stored in the iOS Keychain rather than in
   ordinary app storage, because it is a credential.</li>
 <li>If you make an account, its recovery code, saved to your iCloud Keychain. Apple
@@ -102,13 +114,30 @@ account, and whether or not you have any network connection.</p>
   code to your phone when it is issued and keeps only a hash of it. The code comes
   back to us only if you use it to reset your password, and that reset replaces it
   with a new one.</li>
+<li>From version 1.6, once your notes are encrypted, the key that encrypts them (see
+  "Your writing is encrypted on your phone" below). It is in the iOS Keychain, set
+  to stay on this iPhone only: it is not synced to iCloud Keychain and is not
+  carried to a different phone by a backup. It is deleted when you sign out and
+  when you delete your account. Two other things can sit there with the same
+  protection, and go at the same times: if the key is ever replaced (see "If you
+  lose your password"), the old one (at most the last four), until the app has
+  re-encrypted everything it can read with it; and if a new account's locked key copies couldn't be uploaded
+  at signup, the key itself, until they can.</li>
+<li>While a password reset is finishing, your previous recovery code, in the iOS
+  Keychain, set to stay on this iPhone only. It is kept until the reset is done,
+  even if you sign out in between, because until then it can be the only thing
+  that still opens the key to your notes. It is deleted once the reset is done, or
+  when you delete your account.</li>
+<li>If someone told the app at signup that they were under 13, a single yes/no note
+  saying so, so the account screen keeps refusing. Never the birth year itself.</li>
 </ul>
 <p>Companion lines the app has already fetched are held in memory while it is open, so
 the same screen doesn't ask for the same text twice. They are not written to disk.</p>
 <p>Reminder notifications are scheduled locally by iOS. The notification text contains
 your event title, and it never leaves your device to be delivered.</p>
 <p>Like any app's data, all of this is included in your phone's own backup (an iCloud
-Backup, or a backup to your computer) if you have one switched on. That backup is
+Backup, or a backup to your computer) if you have one switched on, except the
+encryption key, which stays on this iPhone as described above. That backup is
 between you and Apple; we can't see it.</p>
 <h2>If you turn on iCloud sync</h2>
 <p>On iPhone, Settings has a "Sync with iCloud" switch. It is off by default, and it has
@@ -118,13 +147,32 @@ your Apple Account, so they appear on your other Apple devices. <strong>That cop
 everything in each event, including the free text you wrote</strong>, the same list as under
 "What happens if you make an account" below. It travels straight between your phone
 and Apple. It never passes through our servers, we cannot read it, and it is covered
-by Apple's privacy policy.</p>
+by Apple's privacy policy. The encryption described below is for the copy on our
+server; it is not applied to this one, which Apple stores under its own protections
+for iCloud.</p>
 <p>Turning the switch off stops the copying. What is already in your iCloud stays there
 until you delete it, which you can do in the iPhone's Settings, under your name and
 iCloud, where iCloud storage is managed.</p>
 <h2>What happens if you make an account</h2>
 <p>An account is optional. It exists for one reason: so your history survives losing
 your phone, and so you can sign in on a new one.</p>
+<h3>Your age</h3>
+<p>Before it makes an account, the app asks your date of birth: year, month and day,
+all on the same screen, whatever you pick. It asks to check that you are at least
+13, and for nothing else. The year is sent to our server with the sign-up request so
+the server can refuse too. The server checks it before it looks at anything else in
+the request, and then discards it: it is never written to our database or to any
+log. The month and day never leave your phone. The dates are always in the ordinary
+(Gregorian) calendar, even if your phone is set to a different one, and the server
+refuses a year that can't be one.</p>
+<p>If the answer is under 13, the app does not make an account, and saves only the
+yes/no note described under "What stays on your phone" (deleting the app removes
+it). Everything else in Psyched works without an account. If you are 13 to 17, the
+app then asks you to confirm that a parent or guardian has read this policy and the
+Terms of Use and agrees to them. That confirmation is not stored or sent anywhere.</p>
+<p>Versions of the app before 1.6, and the Android app, don't ask, and our server still
+accepts sign-ups from them. The rule that you must be 13 applies all the same.</p>
+<h3>What we store about you</h3>
 <p>When you register, we store:</p>
 <ul>
 <li><strong>Your username</strong>, as you typed it, plus a lowercased copy used to check that no
@@ -136,29 +184,107 @@ your phone, and so you can sign in on a new one.</p>
 <li><strong>A hash of your recovery code</strong>, stored the same way. The app saves the code itself
   to your iCloud Keychain when you sign up; we keep only the hash.</li>
 <li>The time the account was created and last changed.</li>
+<li>From version 1.6, <strong>two locked copies of the key that encrypts your notes</strong>: one
+  locked with your password, one with your recovery code, each with the random salt
+  and setting used to lock it. We cannot open either. The next section explains
+  why they exist.</li>
 </ul>
+<p>We do not store your birth year.</p>
+<h3>Your synced events</h3>
 <p>Once you're signed in, the app syncs the events you log while signed in to our
-server. Events you logged before making an account, or while signed out, belong to the
-phone's signed-out profile: they stay on the phone and are never uploaded. <strong>A synced
-event includes everything in it, including the free text you wrote:</strong></p>
+server. Events you logged before making an account, or while signed out, belong to
+the phone's signed-out profile: they stay on the phone and are never uploaded. A
+synced event contains:</p>
 <ul>
-<li>the event title</li>
+<li>the event title <em>(encrypted from 1.6)</em></li>
 <li>the event type (exam, quiz, presentation, interview, tryout, other)</li>
 <li>the date and time of the event</li>
-<li>your focus intention</li>
-<li><strong>the fear you wrote down</strong> — what you were afraid would happen</li>
+<li>your focus intention <em>(encrypted from 1.6)</em></li>
+<li><strong>the fear you wrote down</strong>, what you were afraid would happen <em>(encrypted from
+  1.6)</em></li>
 <li>your dread rating and your reality rating, 0 to 10</li>
 <li>when you completed the pre-event protocol</li>
 <li>which body sensations you tapped at the protocol's check-in, from the fixed list
   of six (heart pounding, sweaty palms, racing thoughts, and so on), so Insights can
   show which ones come up most often on any phone you sign in on</li>
-<li><strong>your outcome note</strong> — what you wrote afterwards</li>
+<li><strong>your outcome note</strong>, what you wrote afterwards <em>(encrypted from 1.6)</em></li>
 <li>created and updated timestamps, and a deletion marker if you deleted the event</li>
 </ul>
-<p>We are stating that plainly rather than hiding it behind "content you provide."
-If you sign in, the sentences you write in Psyched sit in a database we run. If you
-would rather they never did, don't make an account — the app is fully usable without
-one and we designed it that way on purpose.</p>
+<h3>Your writing is encrypted on your phone (iPhone, from version 1.6)</h3>
+<p>The four items marked "encrypted" are the ones you type. From version 1.6, the iPhone
+app encrypts them together on your phone before they are sent, and our server stores
+only the encrypted result. In plain terms:</p>
+<ul>
+<li>When you make an account, your phone creates a random key for your notes. It never
+  leaves your phones in a form anyone else can use. If the locked copies described
+  next can't be uploaded at signup (no signal, say), the key waits on your phone
+  and the app keeps trying. Until they land, your events sync without their text,
+  so nothing you type is stored readable on our server even for a moment.</li>
+<li>So that you can read your notes on another phone, the app locks one copy of that
+  key with your password and another with your recovery code, and stores the two
+  locked copies on our server. The lock for each is worked out on your phone from
+  the password or the code (PBKDF2-HMAC-SHA256, 600,000 rounds). Our server holds the
+  locked copies and has nothing that opens them.</li>
+<li>When you sign in on another phone, the app downloads a locked copy and opens it
+  with the password you just typed. When you reset your password, the app opens the
+  key with your old recovery code, or uses the copy already on that phone, and locks
+  it again with your new password and your new recovery code.</li>
+<li>Each event's text is encrypted with AES-256-GCM and tied to your account and to
+  that one event, so it cannot be moved onto another event or another account
+  without failing to open.</li>
+</ul>
+<p><strong>What our server can still read</strong> for each synced event: the event type, its date
+and time, your dread and reality ratings, when you completed the protocol, the body
+sensations you tapped, the created, updated and deletion times, and which account it
+belongs to, along with your username. It can also tell roughly how much you wrote,
+because a longer note makes a longer encrypted copy. These stay readable because sync
+needs them to merge the copies on your phones, and none of them is something you
+typed.</p>
+<p><strong>The honest caveat.</strong> Your key is unlocked with your password or your recovery code,
+and those do pass through our server. Your password does every time the app checks it
+with us: when you sign in, when you turn encryption on, when you finish an
+interrupted password reset, when a phone's copy of your key is out of date and you
+unlock it, when you choose to start over with a new key, and when you delete your
+account. Your recovery code, and the new password you choose, do when you reset your
+password. We check them and keep only the hashes described above; we never store or
+log the password or the code themselves. But it means the encryption protects what sits in our database
+and its backups. It would not protect you from someone who had taken over our server
+at the moment you signed in. It also means your notes are only as safe as your
+password: someone with a copy of our database could try to guess it, so use one you
+don't use anywhere else.</p>
+<h3>Accounts made before version 1.6</h3>
+<p>An account made before 1.6, or a phone that was already signed in when it updated,
+is encrypted the first time you enter your password in the updated app. That happens
+either when you sign in again, or through a one-time "Encrypt your synced notes"
+prompt. You can dismiss the prompt; the same option then waits in Settings, under
+your Psyched account, until you use it. <strong>Until then nothing changes: your events
+keep syncing, and their text is stored on our server readable, as it was before
+1.6.</strong> Once it is done, the app uploads every one of your events again in encrypted
+form, and that replaces the readable copies in our database. The database itself
+may keep fragments of the old readable text in its unused storage space until later
+writes overwrite them; no query or feature of ours can read them back. Backups of the database
+taken before that still hold the readable text until they roll off, as described
+under "Deleting your account": up to 7 days at Cloudflare, and up to 14 days on our
+mainland China server.</p>
+<p>If another phone has already encrypted your account, a phone that was signed in
+before that happened asks once for your password to unlock your notes. Until you
+enter it, events from your other phones show there as locked, text you write on that
+phone stays on it and isn't backed up yet, and nothing on it is replaced with blanks.
+Text you write on it meanwhile is kept, and encrypted and backed up once you unlock.</p>
+<p>Once an account is encrypted, our server stops taking readable text for it, whatever
+version of the app sends it. If an older version (iPhone before 1.6, or the Android
+app) sends readable text for that account, the server throws the new text away and
+keeps what it already had for that event. Our server also doesn't send encrypted
+events to those older versions at all, so they keep the text they already had
+instead of having it blanked; they just don't receive changes to encrypted events,
+or new ones, until they update, and what you type into them isn't backed up. Update
+every iPhone you sign in on to 1.6, and expect the Android app to fall behind on an
+encrypted account until it gets this update.</p>
+<p>We are stating all of this plainly rather than hiding it behind "content you
+provide." If you would rather that nothing you log, encrypted or not, ever sat in a
+database we run, don't make an account. The app is fully usable without one and we
+designed it that way on purpose.</p>
+<h3>Sign-in counters</h3>
 <p>So that somebody can't sit there guessing passwords or usernames, our server keeps
 three kinds of counter:</p>
 <ul>
@@ -169,26 +295,45 @@ three kinds of counter:</p>
 <li>requests to create an account from a network address, counted over an hour. Every
   such request is counted, including the successful one that made your account.</li>
 </ul>
-<p>Each counter is one row holding the username or the network address, a count, and the
-time its current window started. Nothing in a row says which account it belongs to.
-The username counter is deleted when you sign in successfully and when you delete
-your account. <strong>The network-address rows are not deleted on a schedule.</strong> A row
-starts again from one the next time that address trips it, and otherwise stays in the
-database. So we hold a list of network addresses that have tried to create an account
-or failed to sign in, each with the time of its latest window. An address that
-created an account has a row whose time is close to the time that account was
-created, which means someone with access to our database could often work out which
-address made which account.</p>
+<p>Each counter is one row holding a count, the time its current window started, and
+either the username or a stand-in for the network address. <strong>The network address
+itself is never stored.</strong> The server stores a hash of it (HMAC-SHA256), made with a
+random secret, called a salt, that changes every day at midnight UTC. The same
+address gives the same hash all day, which is what lets the counter work, and an
+unrelated one the next day. Nothing in a network-address row says which account it
+belongs to. (A username row names the username, because that is what it counts.)</p>
+<p>A clean-up runs every 15 minutes. It deletes every counter whose current window
+started more than an hour ago, so a counter is gone within about an hour and a
+quarter of the last attempt it counted. A counter that keeps being hit, say a
+failed sign-in at least once an hour, starts a fresh window each time and lasts
+until the attempts stop. The username counter also goes as soon as you sign in
+successfully or delete your account. Each day's salt is deleted once the following day has ended, so
+no salt is more than about two days old. While a salt exists, someone with access to
+our database could in principle test addresses against that day's hashes. Once the
+counter rows are gone there is nothing left to test, and once the salt is gone a
+copied hash can no longer be traced to an address. Backups of the database (see
+"Deleting your account") can hold a salt and that day's counters until those backups
+roll off. Counters written before this change, which held the address itself, are
+deleted by the first clean-up after it.</p>
 <h2>What DeepSeek sees</h2>
-<p>The companion characters are written by DeepSeek, an AI model provider based in
-China. Their servers are outside our control, so what we send them matters more than
-anything else in this policy.</p>
-<p><strong>We send DeepSeek only the following, and never anything else:</strong></p>
+<p>The companion characters' AI-written lines come from DeepSeek, an AI model provider
+based in China. Their servers are outside our control, so what we send them matters
+more than anything else in this policy.</p>
+<p><strong>It's off unless you turn it on.</strong> From version 1.6, "AI-written companion lines"
+in Settings, under AI, starts switched off, and the app asks for no generated text at
+all until you turn it on. That includes installs that updated from an older version:
+before 1.6 the switch started on, and after updating it is off unless you had already
+used the switch yourself and left it on. With it off, nothing from the app reaches
+DeepSeek, your companion speaks in lines built into the app and skips its comment on
+the next-move card, and everything else, including your chart, works exactly the
+same. The Android app (version 1.4) hasn't had this change yet; see "If you use the
+Android app."</p>
+<p><strong>If you turn it on, we send DeepSeek only the following, and never anything else:</strong></p>
 <ul>
 <li>which companion you picked, and which language you're using</li>
 <li>which moment in the app you're in: the body check-in or the evidence step of the
   pre-event protocol, the outcome screen, or one of the two readings on Insights</li>
-<li>the event <em>type</em> — the word "exam" or "interview", nothing about which exam</li>
+<li>the event <em>type</em>: the word "exam" or "interview", nothing about which exam</li>
 <li>for the short companion lines on the protocol and outcome screens, your ratings
   only as rough bands: whether your dread was low, medium or high, and whether
   reality came in under, over or close to it. The exact numbers stay on your phone.</li>
@@ -196,7 +341,7 @@ anything else in this policy.</p>
   our own code calculates from them: how many events you've logged, your average
   dread, your average reality, the average gap, how many events you over-predicted,
   and up to your twenty most recent events as type-plus-two-numbers</li>
-<li>the same kind of figures broken down by event type — for each type, how many you
+<li>the same kind of figures broken down by event type: for each type, how many you
   logged, the average dread, the average reality, the average gap, and how many
   ran hotter than reality</li>
 <li>labels our code derives, like whether your gap is narrowing or widening</li>
@@ -217,18 +362,17 @@ event.</p>
 <li>any date, for any event</li>
 <li>your username, your account, or your random install identifier</li>
 </ul>
-<p><strong>You can switch this off.</strong> In Settings, under AI, turn off "AI-written companion
-lines". From then on the app asks for no generated text at all, so nothing from it
-reaches DeepSeek, and your companion speaks in the lines built into the app and skips
-its comment on the next-move card. Everything else, including your chart, works
-exactly the same.</p>
-<p>If you downloaded Psyched from the China mainland App Store, the app does not ask for
-generated companion text at all, so nothing from it reaches DeepSeek. You see the
-companion lines built into the app instead. The app learns which App Store it came
-from a moment after its first launch. Until then it goes by your phone's region
-setting, so a phone set to mainland China is treated as a China mainland download
-from the first second, and a phone set to any other region may ask for a generated
-line before the App Store has answered.</p>
+<p>You can switch it back off at any time in the same place. From then on the app asks
+for no generated text at all.</p>
+<p>If you downloaded Psyched from the China mainland App Store, the app never asks for
+generated companion text, so nothing from it reaches DeepSeek, and Settings doesn't
+offer the switch at all: it explains that your companion uses the lines built into
+the app. The app learns which App Store it came from shortly after it opens, and
+until then it goes by your phone's region setting. Settings checks the App Store
+again each time you open it and hides the switch as soon as it knows. And the
+rule doesn't depend on the switch: if it had been turned on earlier, for example on
+an Apple Account that later moved to the China mainland App Store, the app still asks
+for no generated text once it knows.</p>
 <p>Requests for generated text go to our server, which talks to DeepSeek. DeepSeek never
 receives your network address or anything else about your phone. Our server builds
 each prompt from scratch out of the items listed above: every choice must match a
@@ -246,13 +390,14 @@ breaks character is thrown away and replaced with a line built into the app.</p>
 in the Western North America (<code>wnam</code>) region, reached through a Cloudflare Worker. Cloudflare
 operates the infrastructure and can see the network requests that reach it,
 including your IP address, in the ordinary way any web host does. We don't keep our
-own logs of your requests. The one place our own database records a network address
-is the sign-in and sign-up counters described under "What happens if you make an
-account."</p>
-<p>Requests for companion lines go through the same Cloudflare Worker whether or not you
-have an account. To cap how many lines one install can ask for in a day, the Worker
-keeps a counter in Cloudflare KV under your random install identifier and the date.
-It holds a number, nothing about what you asked for, and expires after two days.</p>
+own logs of your requests, and our own database does not record your network
+address: the sign-in and sign-up counters hold only a short-lived, salted hash of it,
+as described under "Sign-in counters."</p>
+<p>Requests for companion lines, if you have turned AI-written lines on, go through the
+same Cloudflare Worker whether or not you have an account. To cap how many lines one
+install can ask for in a day, the Worker keeps a counter in Cloudflare KV under your
+random install identifier and the date. It holds a number, nothing about what you
+asked for, and expires after two days.</p>
 <p>Generated lines are cached in Cloudflare KV for 30 days so the same situation doesn't
 have to be written twice. A cached line is stored under the inputs that produced it
 and never under anything identifying you: the short companion lines under the plain
@@ -260,17 +405,19 @@ combination (companion, language, moment, event type, rating bands), and the Ins
 readings under a hash of the figures that produced them.</p>
 <p><strong>If you downloaded Psyched from the China mainland App Store</strong>, new accounts are made
 on a server we run in mainland China, hosted by Alibaba Cloud, instead of on
-Cloudflare. Your account, your synced events, and the sign-in counters described above
-are stored there, in mainland China, and not on Cloudflare. Alibaba Cloud
-operates the infrastructure and can see the network requests that reach it, the same
-way Cloudflare can for everyone else. We don't keep logs of your requests there
-either: the web server's request log is switched off. Its error log is on, and a
-request that fails can leave a line there with the network address it came from.
-If you made your account from the China mainland App Store before version 1.2, when
-accounts there could only be made on Cloudflare, the app moves it — your username,
-password, and synced events — to the mainland China server the next time it can reach
-Cloudflare, and then deletes it from Cloudflare. Nothing about signing in changes.
-Otherwise an account stays on the server where it was made.</p>
+Cloudflare. Your account, your synced events (encrypted the same way), the locked
+copies of your note key, and the sign-in counters described above are stored there,
+in mainland China, and not on Cloudflare. Alibaba Cloud operates the infrastructure
+and can see the network requests that reach it, the same way Cloudflare can for
+everyone else. We don't keep logs of your requests there either: the web server's
+request log is switched off. Its error log is on, and a request that fails can leave
+a line there with the network address it came from. If you made your account from
+the China mainland App Store before version 1.2, when accounts there could only be
+made on Cloudflare, the app moves it (your username, password, synced events, and,
+if your notes are encrypted, their encrypted copies and the locked copies of your
+key) to the mainland China server the next time it can reach Cloudflare, and then
+deletes it from Cloudflare. Nothing about signing in changes. Otherwise an account
+stays on the server where it was made.</p>
 <p>Apple sees whatever it normally sees when you download an app: your Apple Account
 and purchase records. That's between you and Apple, and we don't get names or email
 addresses from it.</p>
@@ -279,11 +426,11 @@ addresses from it.</p>
 never stores the token itself, only a SHA-256 hash of it, so a leak of our database
 would not hand anyone a working login.</p>
 <p><strong>A session expires 90 days after you sign in.</strong> After that the app asks you to sign
-in again. Signing out deletes that one session. Using your recovery code invalidates
-every session on every device. A session that simply expires stops working, but its
-record (the hash, your account ID, and its start and end times) stays in the
-database until you reset your password with your recovery code or delete your
-account.</p>
+in again. Signing out deletes that one session, and also removes the key that
+encrypts your notes from that phone; signing back in unlocks it again with your
+password. Using your recovery code invalidates every session on every device. When a
+session expires, its record (the hash, your account ID, and its start and end times)
+is deleted by the same 15-minute clean-up that removes the sign-in counters.</p>
 <h2>If you lose your password</h2>
 <p>There is no password reset by email, because we never collect an email. There is no
 SMS reset, because we never collect a phone number. Instead, the app resets your
@@ -291,36 +438,65 @@ password with the recovery code in your iCloud Keychain: tap "Forgot password?" 
 any device that keychain reaches and choose a new password. Each reset replaces the
 code with a new one, saved the same way. Accounts made before the app saved codes to
 iCloud Keychain were shown the code once at signup, and that code still works.</p>
+<p>From version 1.6, a reset also locks your note key again with your new password and
+your new recovery code. If that is interrupted, for example by losing signal, the app
+tries again for a few seconds, then keeps your old recovery code on that phone, even
+if you sign out. It finishes the next time you sign in there, and otherwise asks for
+your new password again each time you open the app until it has. Until it finishes,
+another phone you sign in on with the new password can't open your notes yet. It says
+so, keeps syncing everything except their text, and offers two ways on: open Psyched
+on the phone where you reset and enter your new password there, or type the recovery
+code you had before the reset. <strong>The app
+never replaces your key on its own because a phone can't open it.</strong> The third option,
+starting over with a new key, is there for when the phone you reset on is gone, and
+it warns you first that notes encrypted under the old key and stored only on our
+server will stay locked for good.</p>
 <p><strong>If you lose your password and your recovery code, your account cannot be
 recovered by anyone, including us.</strong> That happens if your devices with the code are
 all gone and iCloud Keychain was off, or if you delete it from your keychain. We
 cannot verify who you are, so we will not hand over an account to someone who asks
 nicely. This is a deliberate design choice and the cost of not collecting your
-contact details.</p>
+contact details. Because your password and recovery code are the only things that
+open your note key, losing both also makes the server copy of your encrypted notes
+permanently unreadable, to you and to us.</p>
 <p>Your history is still on your phone in that situation. It's the server copy and the
 username that are gone.</p>
+<p>One narrower case. An account made before 1.6 may have been encrypted on a phone that
+didn't have its recovery code saved, and then only the password locks the key. If
+you forget that password and reset it, nothing anywhere can open the old key, so the
+app makes a new one straight away. Text that existed only on our server under the
+old key can't be read again. Any phone that still has its own copy of that text
+encrypts it again under the new key the next time you sign in or unlock on it; the
+same happens after you choose to start over.</p>
 <h2>Deleting your account</h2>
 <p>Settings has a delete option. It asks for your password and asks you to confirm
 twice, and then:</p>
 <ul>
-<li>every event of yours on the server is deleted, including the free text</li>
+<li>every event of yours on the server is deleted, including the free text and its
+  encrypted copy</li>
 <li>every session of yours is deleted</li>
 <li>your user record, with your username and both hashes, is deleted</li>
+<li>the locked copies of your note key are deleted</li>
 <li>the username sign-in counter described earlier is deleted</li>
-<li>on your phone, the app deletes that account's events, their reminders, and the
-  saved recovery code, and signs you out</li>
+<li>on your phone, the app deletes that account's events, their reminders, the saved
+  recovery code and the key that encrypts your notes, and signs you out</li>
 </ul>
 <p>Events you logged while signed out, your companion and language choices, and the
 random install identifier stay on the phone. If "Sync with iCloud" is on, the
 deletion of those events carries through to the copy in your iCloud. The
-network-address counters are not tied to your account and are not removed.</p>
+network-address counters are not tied to your account, so they aren't removed by
+name, but like every counter they are deleted within about an hour and a quarter
+of the last attempt they counted anyway.</p>
 <p>This is a hard delete, not a "deactivated" flag we could restore. <strong>It is not
 reversible and we cannot get it back for you.</strong> If you want to keep your history,
 save it somewhere else first.</p>
-<p>Cloudflare's own infrastructure backups may hold a copy for a short period before
-rolling off. We don't read them and can't selectively edit them. For accounts on our
+<p>Cloudflare keeps a point-in-time history of our database that can restore it to any
+moment in the last 7 days (the recovery window on the Cloudflare plan we use now), so
+a copy can survive there for up to 7 days before rolling off. We don't read it and can't selectively edit it. For accounts on our
 mainland China server, our nightly backups and Alibaba Cloud disk snapshots may hold a
-copy for up to 14 days before they are deleted.</p>
+copy for up to 14 days before they are deleted. Notes that were already encrypted
+when a copy was made are encrypted in it too; a copy made before your account was
+encrypted holds the readable text until it rolls off.</p>
 <h2>Links to other services</h2>
 <p>The Toolkit tab links to research papers, and its Get support page lists helplines
 and websites run by other organisations. Tapping one opens Phone, Messages, WhatsApp
@@ -338,21 +514,33 @@ the text ships with the app, and nothing from these pages is sent to an AI provi
 <li>No location, contacts, photos, microphone, camera, HealthKit data, or advertising
   identifier. The app doesn't request them. The only body-related information that
   leaves your device is the fixed sensation selection: sent to DeepSeek as described
-  in "What DeepSeek sees," and synced with your events if you have an account or turn
-  on iCloud sync.</li>
+  in "What DeepSeek sees" if you turn AI-written lines on, and synced with your events
+  if you have an account or turn on iCloud sync.</li>
 <li>No profile-building across other apps or websites. There is nothing to build one
   from.</li>
 </ul>
 <p>The only third parties in the picture are Apple (app distribution, and iCloud if you
 use iCloud sync or iCloud Keychain), Cloudflare (hosting), Alibaba Cloud (hosting, for
-accounts made from the China mainland App Store), and DeepSeek (companion text, with
-the strict limits described above). On Android, Google takes Apple's place for backup
-and for saving your recovery code. Our website is served by GitHub, and one page on
-it loads fonts from Google.</p>
+accounts made from the China mainland App Store), and DeepSeek (companion text, only
+if you turn it on, with the strict limits described above). On Android, Google takes
+Apple's place for backup and for saving your recovery code. Our website is served by
+GitHub, and one page on it loads fonts from Google.</p>
 <h2>If you use the Android app</h2>
-<p>Psyched for Android is a separate download from our website. It follows everything in
-this policy, with these differences:</p>
+<p>Psyched for Android is a separate download from our website. The current Android
+version is 1.4, and <strong>it has not yet received the version 1.6 changes described in
+this policy.</strong> It follows everything else in this policy, with these differences:</p>
 <ul>
+<li><strong>AI-written companion lines are on by default</strong>, as they were on iPhone before
+  1.6. What is sent when they are on is exactly the list in "What DeepSeek sees". You
+  can switch them off in the app's Settings, and then nothing is sent.</li>
+<li><strong>It does not encrypt your writing.</strong> Events it syncs are stored on our server with
+  their text readable, as described for accounts made before 1.6. If the same
+  account has been encrypted from an iPhone, our server throws away the readable text
+  the Android app sends, and doesn't send the Android app encrypted events at all:
+  it keeps the text it already had, but doesn't receive changes to those events or
+  new encrypted ones until it is updated.</li>
+<li><strong>It doesn't ask your age</strong> when you make an account. You still have to be 13 or
+  older, and a parent or guardian still has to agree if you are under 18.</li>
 <li>There is no iCloud sync. Your events live in the app's database on the phone.</li>
 <li>If Android's own backup is on, your events and settings are included in your
   Google Account's backup and in a phone-to-phone transfer, like any app's data.
@@ -381,56 +569,77 @@ sees that request too. The website never receives anything from the app.</p>
 <p>A lot of people using Psyched are students, and many of them are under 18. Pretending
 otherwise would be dishonest, so here's how that works.</p>
 <ul>
-<li>You must be at least 13 to use Psyched.</li>
-<li>If you are under 18, an adult — a parent or guardian — should read this policy
-  and the Terms with you and agree to them on your behalf. They are the legal party.</li>
-<li>We ask for a username and a password. We do not ask for your real name, your age,
-  your school, your email, or your phone number, and you shouldn't put any of those
-  into a username or an event title.</li>
-<li>Everything in "What DeepSeek sees" applies to you exactly as written. Your writing
-  is not sent to an AI provider.</li>
+<li>You must be at least 13 to use Psyched. When you make an account, the app asks
+  your date of birth to check, as described under "Your age", and won't make an account
+  for anyone under 13.</li>
+<li>If you are under 18, an adult (a parent or guardian) should read this policy
+  and the Terms with you and agree to them on your behalf. They are the legal party.
+  When you make an account, the app asks you to confirm that they have.</li>
+<li>We ask for a username, a password, and your date of birth once, which nobody keeps.
+  We do not ask for your real name, your school, your email, or your phone number,
+  and you shouldn't put any of those into a username or an event title.</li>
+<li>AI-written lines are off unless you turn them on, and when they are on, everything
+  in "What DeepSeek sees" applies to you exactly as written. Your writing is not sent
+  to an AI provider.</li>
 <li>A parent or guardian can write to PsychedSupportTeam@gmail.com to ask what data we hold for an
   account, or to ask us to delete it. Because we can't verify identities, we'll walk
   them through deleting it inside the app rather than doing it from a request in an
   email. That protects the account from someone impersonating a parent.</li>
 </ul>
 <p>If you are in a place with specific children's privacy rules, note that we designed
-around them by collecting as little as possible rather than by age-gating you out.</p>
+around them by collecting as little as possible, and that accounts are only for
+people 13 and older.</p>
+<h2>For schools</h2>
+<p>Psyched is meant for students to use voluntarily, on their own, for themselves. It
+is not built as a classroom tool: there is no teacher view, no class list, and no way
+for a school to see what a student logs. Teachers and schools shouldn't require
+students to use Psyched for a class, or ask to see what they've logged, without their
+own school or district privacy review first. A student who would rather not use it
+should not lose anything for that choice.</p>
 <h2>What you can do</h2>
 <ul>
 <li>Use the app with no account, in which case none of the account sections apply to
-  you. Switch off AI-written companion lines as well, and the app contacts our
-  servers for nothing at all.</li>
-<li>See everything we hold, by opening the app — the synced copy is the same as the
+  you. Leave AI-written companion lines off, as they are unless you turn them on,
+  and the app contacts our servers for nothing at all.</li>
+<li>See everything we hold, by opening the app. The synced copy is the same as the
   copy on your phone.</li>
 <li>Delete individual events. Deleting a synced event empties its copy on the server:
-  the title, the fear, the notes and the ratings are erased, and a blank marker
-  saying "this event was deleted" stays so your other phones remove it too.</li>
+  the title, the fear, the notes, their encrypted copy and the ratings are erased,
+  and a blank marker saying "this event was deleted" stays so your other phones
+  remove it too.</li>
 <li>Delete your whole account and all of it, from Settings.</li>
 <li>Ask us anything at PsychedSupportTeam@gmail.com.</li>
 </ul>
 <h2>How long we keep things</h2>
-<p>While your account exists, we keep your events so sync works. Sessions stop working
-after 90 days; an expired session's record is removed when you reset your password
-with your recovery code or delete your account. The daily counter for companion-line
-requests expires after two days. The sign-in and sign-up counters are kept as
-described under "What happens if you make an account": the username one is deleted
-when you sign in or delete your account, and the network-address ones are not
-deleted on a schedule. Cached companion lines expire after 30 days and contain no
-identifying data. When you delete your account, your events, your sessions, your user
-record and your username counter go at once.</p>
+<p>While your account exists, we keep your events, and the locked copies of your note
+key, so sync works. Sessions stop working after 90 days, and an expired session's
+record is deleted within about 15 minutes of expiring. Sign-in and sign-up counters
+are deleted within about an hour and a quarter of the last attempt they counted, and
+the username one also goes when you sign in or delete your account. The daily salt used to hash network addresses is deleted once the following
+day has ended. Your birth year is never kept at all. The daily counter for
+companion-line requests expires after two days. Cached companion lines expire after
+30 days and contain no identifying data. When you delete your account, your events,
+your sessions, your user record, the locked copies of your note key and your
+username counter go at once.</p>
 <h2>Security, honestly</h2>
 <p>We hash passwords with PBKDF2 at 100,000 iterations, compare secrets in constant
 time, store only hashes of session tokens, and talk to the server over HTTPS only.
-Account deletion is written as explicit deletes inside a single transaction rather
-than relying on database cascade rules to fire.</p>
+From version 1.6 on iPhone, the text you type into a synced event is encrypted on
+your phone with AES-256-GCM under a key that is locked with your password and
+recovery code (PBKDF2-HMAC-SHA256, 600,000 rounds), and our server holds only the
+encrypted text and the locked keys. The limits of that are under "The honest
+caveat" above. Network addresses reach our database only as a salted hash that is
+deleted within about an hour and a quarter of the last attempt it counted, under a
+salt that is itself deleted within about two days. Account deletion is written as explicit
+deletes inside a single transaction rather than relying on database cascade rules to
+fire.</p>
 <p>No system is perfect, and this one is built by a small team. If you find a security
 problem, please write to PsychedSupportTeam@gmail.com before telling anyone else, and we'll fix it.</p>
 <h2>Changes to this policy</h2>
 <p>If we change what we collect or who we send it to, we'll update this page and the
-"Last updated" date, and the app will point you at it. If a change is significant —
-new third party, new category of data — we'll say so in the app rather than quietly
-editing the page.</p>
+"Last updated" date, and the app will point you at it. If a change is significant,
+such as a new third party or a new category of data, we'll say so in the app rather
+than quietly editing the page.</p>
 <h2>Questions</h2>
 <p>Write to PsychedSupportTeam@gmail.com. This policy is governed by the law of
 the Commonwealth of Massachusetts, United States.</p>
