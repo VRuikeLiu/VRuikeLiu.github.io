@@ -51,9 +51,8 @@ footer{margin-top:4rem;padding-top:1.5rem;border-top:1px solid var(--rule);
 <h1>Psyched Privacy Policy</h1>
 <p><strong>Effective:</strong> 21 August 2026<br>
 <strong>Last updated:</strong> 13 November 2026</p>
-<p>This version describes Psyched 1.6 for iPhone. Where older versions behave
-differently, or where the Android app (still version 1.4) hasn't caught up yet, we
-say so in place.</p>
+<p>This version describes Psyched 1.6 for iPhone and for Android. Where older versions
+behave differently, or where the Android app works differently, we say so in place.</p>
 <h2>The short version</h2>
 <ul>
 <li>Psyched works with no account at all. If you never make one, nothing you write is
@@ -170,7 +169,7 @@ yes/no note described under "What stays on your phone" (deleting the app removes
 it). Everything else in Psyched works without an account. If you are 13 to 17, the
 app then asks you to confirm that a parent or guardian has read this policy and the
 Terms of Use and agrees to them. That confirmation is not stored or sent anywhere.</p>
-<p>Versions of the app before 1.6, and the Android app, don't ask, and our server still
+<p>Versions of the app before 1.6, on iPhone or Android, don't ask, and our server still
 accepts sign-ups from them. The rule that you must be 13 applies all the same.</p>
 <h3>What we store about you</h3>
 <p>When you register, we store:</p>
@@ -272,14 +271,13 @@ enter it, events from your other phones show there as locked, text you write on 
 phone stays on it and isn't backed up yet, and nothing on it is replaced with blanks.
 Text you write on it meanwhile is kept, and encrypted and backed up once you unlock.</p>
 <p>Once an account is encrypted, our server stops taking readable text for it, whatever
-version of the app sends it. If an older version (iPhone before 1.6, or the Android
-app) sends readable text for that account, the server throws the new text away and
+version of the app sends it. If an older version (before 1.6, on iPhone or Android)
+sends readable text for that account, the server throws the new text away and
 keeps what it already had for that event. Our server also doesn't send encrypted
 events to those older versions at all, so they keep the text they already had
 instead of having it blanked; they just don't receive changes to encrypted events,
 or new ones, until they update, and what you type into them isn't backed up. Update
-every iPhone you sign in on to 1.6, and expect the Android app to fall behind on an
-encrypted account until it gets this update.</p>
+every phone you sign in on, iPhone or Android, to 1.6.</p>
 <p>We are stating all of this plainly rather than hiding it behind "content you
 provide." If you would rather that nothing you log, encrypted or not, ever sat in a
 database we run, don't make an account. The app is fully usable without one and we
@@ -326,8 +324,8 @@ before 1.6 the switch started on, and after updating it is off unless you had al
 used the switch yourself and left it on. With it off, nothing from the app reaches
 DeepSeek, your companion speaks in lines built into the app and skips its comment on
 the next-move card, and everything else, including your chart, works exactly the
-same. The Android app (version 1.4) hasn't had this change yet; see "If you use the
-Android app."</p>
+same. The Android app works the same way from its version 1.6; Android 1.4 and
+earlier started with the switch on.</p>
 <p><strong>If you turn it on, we send DeepSeek only the following, and never anything else:</strong></p>
 <ul>
 <li>which companion you picked, and which language you're using</li>
@@ -526,31 +524,29 @@ if you turn it on, with the strict limits described above). On Android, Google t
 Apple's place for backup and for saving your recovery code. Our website is served by
 GitHub, and one page on it loads fonts from Google.</p>
 <h2>If you use the Android app</h2>
-<p>Psyched for Android is a separate download from our website. The current Android
-version is 1.4, and <strong>it has not yet received the version 1.6 changes described in
-this policy.</strong> It follows everything else in this policy, with these differences:</p>
+<p>Psyched for Android is a separate download from our website. From version 1.6 it
+works as this policy describes for iPhone 1.6: AI-written companion lines start
+switched off (and are never offered on a phone set to mainland China), your writing
+is encrypted on the phone before it is synced, in exactly the same way and readable
+on either kind of phone, and making an account asks your date of birth. Android 1.4
+and earlier didn't do any of that, as described above for iPhone versions before
+1.6. Beyond that, these things differ:</p>
 <ul>
-<li><strong>AI-written companion lines are on by default</strong>, as they were on iPhone before
-  1.6. What is sent when they are on is exactly the list in "What DeepSeek sees". You
-  can switch them off in the app's Settings, and then nothing is sent.</li>
-<li><strong>It does not encrypt your writing.</strong> Events it syncs are stored on our server with
-  their text readable, as described for accounts made before 1.6. If the same
-  account has been encrypted from an iPhone, our server throws away the readable text
-  the Android app sends, and doesn't send the Android app encrypted events at all:
-  it keeps the text it already had, but doesn't receive changes to those events or
-  new encrypted ones until it is updated.</li>
-<li><strong>It doesn't ask your age</strong> when you make an account. You still have to be 13 or
-  older, and a parent or guardian still has to agree if you are under 18.</li>
 <li>There is no iCloud sync. Your events live in the app's database on the phone.</li>
 <li>If Android's own backup is on, your events and settings are included in your
   Google Account's backup and in a phone-to-phone transfer, like any app's data.
-  Your session token and the on-device copy of your recovery code are left out of
-  both.</li>
-<li>Your session token is encrypted with a key held in the Android Keystore, which
-  never leaves the phone.</li>
+  Your session token, the on-device copy of your recovery code, and the key that
+  encrypts your notes are left out of both.</li>
+<li>Your session token, and from version 1.6 the key that encrypts your notes, are
+  encrypted with a key held in the Android Keystore, which never leaves the phone.
+  Wherever this policy says the iOS Keychain keeps something on "this iPhone only",
+  on Android it is kept this way instead. The note key never goes to Google: a new
+  phone gets it by unlocking the locked copy on our server with your password or
+  recovery code, as on iPhone.</li>
 <li>Your recovery code is saved with Google's Block Store, so it can come back when
   you restore a backup onto a new phone. That copy is held by Google under your
-  Google Account, not by us.</li>
+  Google Account, not by us. Block Store holds only the recovery code, never the key
+  that encrypts your notes.</li>
 <li>There is no App Store country to read, so the app goes by your phone's region
   setting. A phone set to mainland China uses our mainland China server and asks for
   no AI-written lines.</li>
